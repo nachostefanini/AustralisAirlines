@@ -27,7 +27,7 @@ public class Sandbox {
                     if (a.getMap()[rowTemp-1][columnTemp-1].isOccupied() == true){
                         a.getMap()[rowTemp-1][columnTemp-1].setStatus(false);
                         System.out.println("You succesfully reserved the seat: " + a.getMap()[rowTemp-1][columnTemp-1].printName() + "\n");
-                        a.getMap()[rowTemp-1][columnTemp-1].setName("XXX");
+                        a.getMap()[rowTemp-1][columnTemp-1].setName(" X ");
                         count++;
 
                     }else {
