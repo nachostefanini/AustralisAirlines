@@ -1,5 +1,7 @@
 package AppAdmin;
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
+
 import java.util.*;
 
 public class Apifake {
@@ -7,7 +9,7 @@ public class Apifake {
     HashMap <String , Pilot> pilots= new HashMap<>();
     HashMap <String, Airplane> airplanes= new HashMap <>();
     HashMap <String, Airport> airports = new HashMap<>();
-    HashMap <String, Flight> fligths = new HashMap<>();
+    HashMap <String, Flight> flights = new HashMap<>();
 
     void addpilot (Pilot newPilot){
         String Dni = newPilot.getDni();
@@ -110,20 +112,50 @@ public class Apifake {
             airports.forEach((String, Airport) -> System.out.println("Code: "+String + " Location: "+Airport.getlocation()));
         }
     }
-    void addFlight (Airplane airplane, Pilot pilot, Airport airportFrom, Airport airportTo){
-        if(airplanes.containsKey(airplane)){
-            if(pilots.containsKey(pilot)){
-                if (airports.containsKey(airportFrom)){
-                    if (airports.containsKey(airportTo)){
-                        Flight flight = new Flight(airportFrom, airportTo, airplane, pilot);
-                    }
-                }
-            }
+
+    Airport getairportFrom (String airportcodefrom){ return airports.get(airportcodefrom); }
+
+    Airport getairportTo (String airportcodeto){
+        return airports.get(airportcodeto);
+    }
+
+    Airplane getairplane (String airplanecode){
+        return airplanes.get(airplanecode);
+    }
+
+    Pilot getpilot (String dni){
+            return pilots.get(dni);
+    }
+
+    void addflight (Flight flight){
+        String code = flight.getCode();
+        if(flights.containsKey(code)){
+            System.out.println("already exist a flight with that code, please enter another...");
         }
-        else {
-            System.out.println("that airplane does not exit");
+        else{
+            flights.put(code,flight);
+            System.out.println("The flight with code "+code+" has been succesfully added to the list");
         }
     }
 
+    void quitflight (String code){
+        if (flights.containsKey(code)) {
+            flights.remove(code);
+            System.out.println("the flight whith code "+code+" has been deleted succesfully...");
+        }
+        else{
+            System.out.println("the flight with code "+code+" is not listed...");
+        }
+    }
+
+    void printflights(){
+        if (flights.isEmpty()){
+            System.out.println("The list of flights is empty");
+        }
+        else {
+            System.out.println("This is the list of flights:");
+            flights.forEach((String, Flight) -> System.out.println("Code: "+String+" Origin Airport: "+Flight.getFrom()+" Destination Airport: "+Flight.getTo()+" Airplane: "+Flight.getAirplane()+" Pilot: "+Flight.getPilot()));
+        }
+    }
 
 }

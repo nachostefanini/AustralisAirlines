@@ -87,13 +87,25 @@ public class AdminMenu {
                     System.out.println();
                     break;
                 case 10:
-
+                    String airportcodefrom = Scanner.getString("Please enter the code of the airport where Starts the flight ");
+                    Airport airportFrom = api.getairportFrom(airportcodefrom);
+                    String airportcodeto = Scanner.getString("Please enter the code of the airport where finishes the flight ");
+                    Airport airportTo = api.getairportTo(airportcodeto);
+                    String airplanecode = Scanner.getString("Please enter the code of the airplane you want to asign ");
+                    Airplane airplane = api.getairplane(airplanecode);
+                    dni = Scanner.getString("Please enter the dni of the pilot you want to asign");
+                    Pilot pilot = api.getpilot(dni);
+                    code = Scanner.getString("please enter a flight code");
+                    Flight flight = new Flight(airportFrom, airportTo, airplane, pilot, code);
+                    api.addflight(flight);
                     break;
                 case 11:
-
+                    code = Scanner.getString("please enter the flight code you want to erase");
+                    api.quitflight(code);
                     break;
                 case 12:
-
+                    System.out.flush();
+                    api.printflights();
                     break;
                 case 13:
                     System.out.flush();

@@ -5,12 +5,14 @@ public class Flight {
     Airport to;
     Airplane airplane;
     Pilot pilot;
+    String code;
 
-    public Flight(Airport from, Airport to, Airplane airplane, Pilot pilot) {
+    public Flight(Airport from, Airport to, Airplane airplane, Pilot pilot, String code) {
         this.from = from;
         this.to = to;
         this.airplane = airplane;
         this.pilot = pilot;
+        this.code = code;
     }
 
     public Airport getFrom() {
@@ -27,5 +29,9 @@ public class Flight {
 
     public Pilot getPilot() {
         return pilot;
+    }
+
+    public String getCode(){
+        return code;
     }
 }
