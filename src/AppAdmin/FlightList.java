@@ -19,7 +19,7 @@ public class FlightList {
         for (int i =0; i<vuelos.size();i++){
 
             if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getOrigin())  && arreglo[1].equalsIgnoreCase(vuelos.get(i).getDestination())){
-                System.out.println("Se encontro vuelo directo: ");
+                System.out.println("Direct flight found: ");
                 System.out.println( vuelos.get(i).getName() +" from: "+ vuelos.get(i).getOrigin() + " to: "+ vuelos.get(i).getDestination());
                 vuelos.remove(vuelos.get(i));
                 System.out.println("\n");
@@ -40,7 +40,7 @@ public class FlightList {
 
                         temp.add(vuelos.get(j));
 
-                        System.out.println("Se encontro vuelo con 1 sola escala: ");
+                        System.out.println("Flight with one stop found: ");
                         print(temp);
 
                         definitivo.add(temp);
@@ -69,7 +69,7 @@ public class FlightList {
 
                             if (temp.get(1).getDestination().equalsIgnoreCase( vuelos.get(k).getOrigin()) && vuelos.get(k).getDestination().equalsIgnoreCase( arreglo[1])){
                                 temp.add(vuelos.get(k));
-                                System.out.println("Se encontro vuelo con 2 escalas: ");
+                                System.out.println("Flight with two stops found: ");
                                 print(temp);
                             }
 
