@@ -1,26 +1,35 @@
 package AppAdmin;
 
 public class Flight {
-    Airport from;
-    Airport to;
+    String from;
+    String to;
     Airplane airplane;
-    Pilot pilot;
     String code;
+    Pilot pilot;
 
-    public Flight(Airport from, Airport to, Airplane airplane, Pilot pilot, String code) {
+    String[] data = new String[2];
+
+    public Flight(String from, String to, Airplane airplane, String code ,Pilot pilot) {
         this.from = from;
         this.to = to;
         this.airplane = airplane;
         this.pilot = pilot;
         this.code = code;
+
+        data[0] = from;
+        data[1] = to;
     }
 
-    public Airport getFrom() {
-        return from;
+    public String getOrigin(){
+        return data[0];
     }
 
-    public Airport getTo() {
-        return to;
+    public String getDestination(){
+        return data[1];
+    }
+
+    public String getName() {
+        return code;
     }
 
     public Airplane getAirplane() {

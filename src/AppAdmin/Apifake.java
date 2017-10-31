@@ -154,7 +154,7 @@ public class Apifake {
         }
         else {
             System.out.println("This is the list of flights:");
-            flights.forEach((String, Flight) -> System.out.println("Code: "+String+" Origin Airport: "+Flight.getFrom()+" Destination Airport: "+Flight.getTo()+" Airplane: "+Flight.getAirplane()+" Pilot: "+Flight.getPilot()));
+            flights.forEach((String, Flight) -> System.out.println("Code: "+String+" Origin Airport: "+Flight.getOrigin()+" Destination Airport: "+Flight.getDestination()+" Airplane: "+Flight.getAirplane()+" Pilot: "+Flight.getPilot()));
         }
     }
 
