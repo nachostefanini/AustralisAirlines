@@ -22,14 +22,14 @@ public class Sandbox2 {
 
 
         //Creo los vuelos
-        Flight y = new Flight("Argentina","China",test1,"F01",p);
-        Flight b = new Flight("Argentina","Peru",test2,"F02",p);
-        Flight c = new Flight("Peru","Venezuela",test3,"F03",p);
-        Flight d = new Flight("Venezuela","China",test4,"F04",p);
-        Flight e = new Flight("Madrid","China",test5,"F05",p);
-        Flight f = new Flight("Peru","China",test6,"F06",p);
-        Flight g = new Flight("Argentina","Venezuela",test7,"F07",p);
-        Flight h = new Flight("Venezuela","Madrid",test8,"F08",p);
+        Flight y = new Flight("Argentina","China",test1,p,"F01");
+        Flight b = new Flight("Argentina","Peru",test2,p,"F02");
+        Flight c = new Flight("Peru","Venezuela",test3,p,"F03");
+        Flight d = new Flight("Venezuela","China",test4,p,"F04");
+        Flight e = new Flight("Madrid","China",test5,p,"F05");
+        Flight f = new Flight("Peru","China",test6,p,"F06");
+        Flight g = new Flight("Argentina","Venezuela",test7,p,"F07");
+        Flight h = new Flight("Venezuela","Madrid",test8,p,"F08");
 
 
         //Creo la lista de vuelos

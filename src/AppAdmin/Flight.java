@@ -24,11 +24,11 @@ public class Flight {
         this.code = code;
     }
 
-    public Airport getFrom() {
+    public Airport getOrigin() {
         return from;
     }
 
-    public Airport getTo() {
+    public Airport getDestination() {
         return to;
     }
 
@@ -40,7 +40,7 @@ public class Flight {
         return pilot;
     }
 
-    public String getCode(){
+    public String getName(){
         return code;
     }
 }
