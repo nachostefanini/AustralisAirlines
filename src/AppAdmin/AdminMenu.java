@@ -6,8 +6,6 @@ public class AdminMenu {
     public static void main(String[] args) {
 
 
-
-
                     SeatMap asientos = new SeatMap(3,3);
 
                     //Creo los aviones
@@ -46,8 +44,6 @@ public class AdminMenu {
                     api.addflight(h);
 
 
-
-
         while (true) {
             System.out.println("+--------------------------------------------+");
             System.out.println("              Australis Airlines              ");
@@ -77,13 +73,13 @@ public class AdminMenu {
                     System.out.flush();
                     String name = Scanner.getString("Enter the name of the pilot: ");
                     String surname = Scanner.getString("Enter the surname of the pilot: ");
-                    String dni = Scanner.getString("Enter the DNI of the pilot");
+                    String dni = Scanner.getString("Enter the DNI of the pilot: ");
                     Pilot newPilot = new Pilot(name, surname, dni);
                     api.addpilot(newPilot);
                     break;
                 case 2:
                     System.out.flush();
-                    dni = Scanner.getString("Enter the DNI of the pilot you want to remove");
+                    dni = Scanner.getString("Enter the DNI of the pilot you want to remove: ");
                     api.quitpilot(dni);
                     System.out.println();
                     break;
@@ -103,7 +99,7 @@ public class AdminMenu {
                     break;
                 case 5:
                     System.out.flush();
-                    code = Scanner.getString("Please enter the code of the airplane you want to quit ");
+                    code = Scanner.getString("Please enter the code of the airplane you want to eliminate: ");
                     api.quitairplane(code);
                     System.out.println();
                     break;
@@ -115,14 +111,14 @@ public class AdminMenu {
                 case 7:
                     System.out.flush();
                     String airportcode = Scanner.getString("Please enter the code of the airport: ");
-                    String location = Scanner.getString("Please enter the location of the airport");
+                    String location = Scanner.getString("Please enter the location of the airport: ");
                     Airport newairport = new Airport(airportcode, location);
                     api.addairport(newairport);
                     System.out.println();
                     break;
                 case 8:
                     System.out.flush();
-                    airportcode = Scanner.getString("Please enter the code of the airport you want to quit ");
+                    airportcode = Scanner.getString("Please enter the code of the airport you want to eliminate: ");
                     api.quitairport(airportcode);
                     System.out.println();
                     break;
@@ -140,12 +136,12 @@ public class AdminMenu {
                     Airplane airplane = api.getairplane(airplanecode);
                     dni = Scanner.getString("Please enter the dni of the pilot you want to asign");
                     Pilot pilot = api.getpilot(dni);
-                    code = Scanner.getString("please enter a flight code");
+                    code = Scanner.getString("Please enter a flight code: ");
                     Flight flight = new Flight(airportcodefrom, airportcodeto, airplane, code, pilot);
                     api.addflight(flight);
                     break;
                 case 11:
-                    code = Scanner.getString("please enter the flight code you want to erase");
+                    code = Scanner.getString("Please enter the flight code you want to erase: ");
                     api.quitflight(code);
                     break;
                 case 12:
@@ -154,12 +150,12 @@ public class AdminMenu {
                     break;
                 case 13:
                     System.out.flush();
-                    String origin = Scanner.getString("Please enter the airport of origin");
-                    String destiny = Scanner.getString("Please enter the airport of destiny");
+                    String origin = Scanner.getString("Please enter the airport of origin: ");
+                    String destiny = Scanner.getString("Please enter the airport of destiny: ");
                     String[] buscar = {origin,destiny};
+                    System.out.println("\n");
                     System.out.println(" ------------- Flight finder------------- ");
                     Apifake.find(buscar);
-                    System.exit(0);
                     break;
                 case 14:
                     System.out.flush();

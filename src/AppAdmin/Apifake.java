@@ -127,7 +127,7 @@ public class Apifake {
             return pilots.get(dni);
     }
 
-    void addflight (Flight flight){
+     public void addflight (Flight flight){
         if(vuelos.contains(flight)){
             System.out.println("already exist a flight with that code, please enter another...");
         }
@@ -137,30 +137,22 @@ public class Apifake {
         }
     }
 
-    void quitflight (String code){
-        Flight flight = searchflight(code);
-        if (vuelos.contains(flight)) {
-            vuelos.remove(flight);
-            System.out.println("the flight whith code "+flight.getCode()+" has been deleted succesfully...");
-        }
-        else{
-            System.out.println("the flight with code "+flight.getCode()+" is not listed...");
+    public void quitflight (String code){
+
+
+        for (int i = 0; i < vuelos.size(); i++) {
+
+            if (vuelos.get(i).getCode().equalsIgnoreCase(code)) {
+                vuelos.remove(i);
+                System.out.println("The flight with the code " + code + " has been deleted successfully...");
+                break;
+            }
+//            System.out.println("The flight with code " + code + " does not exist.");
         }
     }
 
-    public  Flight searchflight(String code){
-        for (Flight i : vuelos){
-            if ((i.getCode())==(code)){
-                return i;
-            }
-            else {
-                return null;
-            }
-        }
-        return null;
-    }
 
-    public static void printflights(){
+    public  static void printflights(){
         for (Flight i : vuelos) {
             System.out.println("Flight: " + i.getName() + " (from: "+i.getOrigin() + " to: "+i.getDestination()+ ")");
         }
