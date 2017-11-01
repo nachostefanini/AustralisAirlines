@@ -36,7 +36,7 @@ public class ClientMenu {
                     categoría implementar;
                     se tiene que poder ordenar por precio, escalas y duración.
                      */
-                    api.searchflight(from,to,quantity,code);
+//                    api.searchflight(from,to,quantity,code);
                     System.out.println();
                     break;
                 case 2:

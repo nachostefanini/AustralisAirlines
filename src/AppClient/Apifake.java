@@ -6,7 +6,7 @@ public class Apifake {
 
     HashMap <String , Pilot> pilots= new HashMap<>();
     HashMap <String, Airplane> airplanes= new HashMap <>();
-    HashMap <String, Airport> airports = new HashMap<>();
+    HashMap <String, String> airports = new HashMap<>();
     HashMap <String, Flight> flights = new HashMap<>();
     HashMap <String, Ticket> tickets = new HashMap<>();
 
@@ -81,16 +81,17 @@ public class Apifake {
 
     }
 
-    void addairport (Airport newairport){
-        String code = newairport.getairportcode();
-        if(airports.containsKey(code)){
-            System.out.println("already exist a airplane with that code, please enter another...");
-        }
-        else{
-            airports.put(newairport.getairportcode(),newairport);
-            System.out.println("The airport with code "+newairport.getairportcode()+" has been succesfully added to the list");
-        }
-    }
+    //todo hacer un foreach q recorra el arraylist de aeropuertos y te los imprima
+//    void addairport (String newairport){
+//        String code = newairport.getairportcode();
+//        if(airports.containsKey(code)){
+//            System.out.println("already exist a airplane with that code, please enter another...");
+//        }
+//        else{
+//            airports.put(newairport.getairportcode(),newairport);
+//            System.out.println("The airport with code "+newairport.getairportcode()+" has been succesfully added to the list");
+//        }
+//    }
 
     void quitairport (String airportcode){
         if (airports.containsKey(airportcode)) {
@@ -108,15 +109,17 @@ public class Apifake {
         }
         else {
             System.out.println("This is the list of airports:");
-            airports.forEach((String, Airport) -> System.out.println("Code: "+String + " Location: "+Airport.getlocation()));
+            // todo arreglar esto
+//            airports.forEach((String, Airport) -> System.out.println("Code: "+String + " Location: "+Airport.getDes()));
         }
     }
 
-    Airport getairportFrom (String airportcodefrom){ return airports.get(airportcodefrom); }
-
-    Airport getairportTo (String airportcodeto){
-        return airports.get(airportcodeto);
-    }
+    // todo arrelar esto
+//    String getairportFrom (String airportcodefrom){ return airports.get(airportcodefrom); }
+//
+//    String getairportTo (String airportcodeto){
+//        return airports.get(airportcodeto);
+//    }
 
     Airplane getairplane (String airplanecode){
         return airplanes.get(airplanecode);
@@ -127,7 +130,7 @@ public class Apifake {
     }
 
     void addflight (Flight flight){
-        String code = flight.getCode();
+        String code = flight.getName();
         if(flights.containsKey(code)){
             System.out.println("already exist a flight with that code, please enter another...");
         }
@@ -153,15 +156,15 @@ public class Apifake {
         }
         else {
             System.out.println("This is the list of flights:");
-            flights.forEach((String, Flight) -> System.out.println("Code: "+String+" Origin Airport: "+Flight.getFrom()+" Destination Airport: "+Flight.getTo()+" Airplane: "+Flight.getAirplane()+" Pilot: "+Flight.getPilot()));
+            flights.forEach((String, Flight) -> System.out.println("Code: "+String+" Origin Airport: "+Flight.getDestination()+" Destination Airport: "+Flight.getDestination()+" Airplane: "+Flight.getAirplane()+" Pilot: "+Flight.getPilot()));
         }
     }
 
-    void searchflight(String from, String to, int quantity, String code){
-        if (from ==)
-
-
-    }
+//    void searchflight(String from, String to, int quantity, String code){
+//        if (from ==)
+//
+//
+//    }
 
 
 }
