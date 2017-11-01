@@ -4,6 +4,50 @@ import Scanner.Scanner;
 public class AdminMenu {
     static Apifake api = new Apifake();
     public static void main(String[] args) {
+
+
+
+
+                    SeatMap asientos = new SeatMap(3,3);
+
+                    //Creo los aviones
+                    Airplane test1 = new Airplane(asientos,"Test1");
+                    Airplane test2 = new Airplane(asientos,"Test2");
+                    Airplane test3 = new Airplane(asientos,"Test3");
+                    Airplane test4 = new Airplane(asientos,"Test4");
+                    Airplane test5 = new Airplane(asientos,"Test5");
+                    Airplane test6 = new Airplane(asientos,"Test6");
+                    Airplane test7 = new Airplane(asientos,"Test7");
+                    Airplane test8 = new Airplane(asientos,"Test8");
+
+                    //Creo pilotos
+                    Pilot piloto = new Pilot("Juan","Perez","1234567");
+
+
+                    //Creo los vuelos
+                    Flight a = new Flight("Argentina","China",test1,"F01",piloto);
+                    Flight b = new Flight("Argentina","Peru",test2,"F02",piloto);
+                    Flight c = new Flight("Peru","Venezuela",test3,"F03",piloto);
+                    Flight d = new Flight("Venezuela","China",test4,"F04",piloto);
+                    Flight e = new Flight("Madrid","China",test5,"F05",piloto);
+                    Flight f = new Flight("Peru","China",test6,"F06",piloto);
+                    Flight g = new Flight("Argentina","Venezuela",test7,"F07",piloto);
+                    Flight h = new Flight("Venezuela","Madrid",test8,"F08",piloto);
+
+
+                    //agrego los vuelos a la lista de vuelos
+                    api.addflight(a);
+                    api.addflight(b);
+                    api.addflight(c);
+                    api.addflight(d);
+                    api.addflight(e);
+                    api.addflight(f);
+                    api.addflight(g);
+                    api.addflight(h);
+
+
+
+
         while (true) {
             System.out.println("+--------------------------------------------+");
             System.out.println("              Australis Airlines              ");
@@ -22,7 +66,8 @@ public class AdminMenu {
             System.out.println("10. Add Flight");
             System.out.println("11. Quit Flight");
             System.out.println("12. Show Flights list");
-            System.out.println("13. Exit: ");
+            System.out.println("13. Find Flights");
+            System.out.println("14. Exit: ");
             System.out.println();
             int opc = Scanner.getInt("What operation do you want to do: ");
             System.out.println("\t");
@@ -108,6 +153,15 @@ public class AdminMenu {
                     api.printflights();
                     break;
                 case 13:
+                    System.out.flush();
+                    String origin = Scanner.getString("Please enter the airport of origin");
+                    String destiny = Scanner.getString("Please enter the airport of destiny");
+                    String[] buscar = {origin,destiny};
+                    System.out.println(" ------------- Flight finder------------- ");
+                    Apifake.find(buscar);
+                    System.exit(0);
+                    break;
+                case 14:
                     System.out.flush();
                     System.out.println("Thank you for using the Admin App...");
                     System.exit(0);
