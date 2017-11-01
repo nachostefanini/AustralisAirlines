@@ -70,7 +70,9 @@ public class AdminMenu {
                 case 7:
                     System.out.flush();
                     String airportcode = Scanner.getString("Please enter the code of the airport: ");
-                    api.addairport(airportcode);
+                    String location = Scanner.getString("Please enter the location of the airport");
+                    Airport newairport = new Airport(airportcode, location);
+                    api.addairport(newairport);
                     System.out.println();
                     break;
                 case 8:
@@ -86,13 +88,15 @@ public class AdminMenu {
                     break;
                 case 10:
                     String airportcodefrom = Scanner.getString("Please enter the country of origin: ");
+                    Airport airportFrom = api.getairportFrom(airportcodefrom);
                     String airportcodeto = Scanner.getString("Please enter the country of destination: ");
+                    Airport airportTo = api.getairportTo(airportcodeto);
                     String airplanecode = Scanner.getString("Please enter the code of the airplane you want to asign ");
                     Airplane airplane = api.getairplane(airplanecode);
                     dni = Scanner.getString("Please enter the dni of the pilot you want to asign");
                     Pilot pilot = api.getpilot(dni);
                     code = Scanner.getString("please enter a flight code");
-                    Flight flight = new Flight(airportcodefrom, airportcodeto, airplane , pilot,code);
+                    Flight flight = new Flight(airportcodefrom, airportcodeto, airplane, code, pilot);
                     api.addflight(flight);
                     break;
                 case 11:

@@ -1,35 +1,35 @@
 package AppAdmin;
 
 public class Flight {
-    /*
-        int dia;
-        int horario;
-        fecha desde;
-        fecha hasta;
-        Un vuelo siempre es entre dos aeropuertos conocidos y están planificados para un dia de la semana y horario en particular,
-        y tienen un código. Además tienen una fecha desde y hasta que determinan un rango de semanas en donde ese vuelo se repite,
-        conservando siempre el mismo código de vuelo. Un vuelo también tiene vinculado un avión
-    */
-    
-    public Flight(String from, String to, Airplane airplane, Pilot pilot, String code) {
+    String from;
+    String to;
+    Airplane airplane;
+    String code;
+    Pilot pilot;
+
+    String[] data = new String[2];
+
+    public Flight(String from, String to, Airplane airplane, String code ,Pilot pilot) {
         this.from = from;
         this.to = to;
         this.airplane = airplane;
         this.pilot = pilot;
         this.code = code;
-    }
-    String from;
-    String to;
-    Airplane airplane;
-    Pilot pilot;
 
-    String code;
-
-    public String getOrigin() {
-        return from;
+        data[0] = from;
+        data[1] = to;
     }
 
-    public String getDestination() {return to;
+    public String getOrigin(){
+        return data[0];
+    }
+
+    public String getDestination(){
+        return data[1];
+    }
+
+    public String getName() {
+        return code;
     }
 
     public Airplane getAirplane() {
@@ -40,7 +40,7 @@ public class Flight {
         return pilot;
     }
 
-    public String getName(){
+    public String getCode(){
         return code;
     }
 }
