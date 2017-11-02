@@ -1,8 +1,10 @@
 package AppAdmin;
+import Server.Server;
 import Scanner.Scanner;
 
 public class AdminMenu {
     static Apifake api = new Apifake();
+
     public static void main(String[] args) {
         while (true) {
             System.out.println("+--------------------------------------------+");
@@ -34,17 +36,17 @@ public class AdminMenu {
                     String surname = Scanner.getString("Enter the surname of the pilot: ");
                     String dni = Scanner.getString("Enter the DNI of the pilot");
                     Pilot newPilot = new Pilot(name, surname, dni);
-                    api.addpilot(newPilot);
+                    Server.addpilot(newPilot);
                     break;
                 case 2:
                     System.out.flush();
                     dni = Scanner.getString("Enter the DNI of the pilot you want to remove");
-                    api.quitpilot(dni);
+                    Server.quitpilot(dni);
                     System.out.println();
                     break;
                 case 3:
                     System.out.flush();
-                    api.printpilots();
+                    Server.printpilots();
                     System.out.println();
                     break;
                 case 4:
@@ -54,17 +56,17 @@ public class AdminMenu {
                     int columns = Scanner.getInt("Please enter the number of columns of seats: ");
                     SeatMap seats = new SeatMap(rows, columns);
                     Airplane newairplane = new Airplane(seats, code);
-                    api.addairplane(newairplane);
+                    Server.addairplane(newairplane);
                     break;
                 case 5:
                     System.out.flush();
                     code = Scanner.getString("Please enter the code of the airplane you want to quit ");
-                    api.quitairplane(code);
+                    Server.quitairplane(code);
                     System.out.println();
                     break;
                 case 6:
                     System.out.flush();
-                    api.printairplanes();
+                    Server.printairplanes();
                     System.out.println();
                     break;
                 case 7:
@@ -72,18 +74,18 @@ public class AdminMenu {
                     String airportcode = Scanner.getString("Please enter the code of the airport: ");
                     String location = Scanner.getString("Please enter the location of the airport");
                     Airport newairport = new Airport(airportcode, location);
-                    api.addairport(newairport);
+                    Server.addairport(newairport);
                     System.out.println();
                     break;
                 case 8:
                     System.out.flush();
                     airportcode = Scanner.getString("Please enter the code of the airport you want to quit ");
-                    api.quitairport(airportcode);
+                    Server.quitairport(airportcode);
                     System.out.println();
                     break;
                 case 9:
                     System.out.flush();
-                    api.printairports();
+                    Server.printairports();
                     System.out.println();
                     break;
                 case 10:
@@ -97,15 +99,15 @@ public class AdminMenu {
                     Pilot pilot = api.getpilot(dni);
                     code = Scanner.getString("please enter a flight code");
                     Flight flight = new Flight(airportFrom, airportTo, airplane, pilot, code);
-                    api.addflight(flight);
+                    Server.addflight(flight);
                     break;
                 case 11:
                     code = Scanner.getString("please enter the flight code you want to erase");
-                    api.quitflight(code);
+                    Server.quitflight(code);
                     break;
                 case 12:
                     System.out.flush();
-                    api.printflights();
+                    Server.printflights();
                     break;
                 case 13:
                     System.out.flush();
