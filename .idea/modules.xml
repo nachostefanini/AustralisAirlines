@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/AustralisAirline.iml" filepath="$PROJECT_DIR$/AustralisAirline.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/Australis Airlines.iml" filepath="$PROJECT_DIR$/Australis Airlines.iml" />
+>>>>>>> e513ec4997cbb74616d979b853f2ccdd1dbb6d49
     </modules>
   </component>
 </project>

@@ -1,15 +1,15 @@
 package AppAdmin;
 
-//import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
-
 import java.util.*;
+import java.util.ArrayList;
 
 public class Apifake {
 
     HashMap <String , Pilot> pilots= new HashMap<>();
     HashMap <String, Airplane> airplanes= new HashMap <>();
     HashMap <String, Airport> airports = new HashMap<>();
-    HashMap <String, Flight> flights = new HashMap<>();
+    static ArrayList<Flight> vuelos = new ArrayList<>();
+
 
     void addpilot (Pilot newPilot){
         String Dni = newPilot.getDni();
@@ -127,35 +127,118 @@ public class Apifake {
             return pilots.get(dni);
     }
 
-    void addflight (Flight flight){
-        String code = flight.getCode();
-        if(flights.containsKey(code)){
+     public void addflight (Flight flight){
+        if(vuelos.contains(flight)){
             System.out.println("already exist a flight with that code, please enter another...");
         }
         else{
-            flights.put(code,flight);
-            System.out.println("The flight with code "+code+" has been succesfully added to the list");
+            vuelos.add(flight);
+            System.out.println("The flight with code "+flight.getCode()+" has been succesfully added to the list");
         }
     }
 
-    void quitflight (String code){
-        if (flights.containsKey(code)) {
-            flights.remove(code);
-            System.out.println("the flight whith code "+code+" has been deleted succesfully...");
-        }
-        else{
-            System.out.println("the flight with code "+code+" is not listed...");
+    public void quitflight (String code){
+
+
+        for (int i = 0; i < vuelos.size(); i++) {
+
+            if (vuelos.get(i).getCode().equalsIgnoreCase(code)) {
+                vuelos.remove(i);
+                System.out.println("The flight with the code " + code + " has been deleted successfully...");
+                break;
+            }
+//            System.out.println("The flight with code " + code + " does not exist.");
         }
     }
 
-    void printflights(){
-        if (flights.isEmpty()){
-            System.out.println("The list of flights is empty");
+
+    public  static void printflights(){
+        for (Flight i : vuelos) {
+            System.out.println("Flight: " + i.getName() + " (from: "+i.getOrigin() + " to: "+i.getDestination()+ ")");
         }
-        else {
-            System.out.println("This is the list of flights:");
-            flights.forEach((String, Flight) -> System.out.println("Code: "+String+" Origin Airport: "+Flight.getFrom()+" Destination Airport: "+Flight.getTo()+" Airplane: "+Flight.getAirplane()+" Pilot: "+Flight.getPilot()));
+        System.out.println("\n");
+    }
+
+    public static void find(String[] arreglo){
+        ArrayList<ArrayList<Flight>> definitivo = new ArrayList<>();
+
+
+        //Si hay vuelo directo
+        for (int i =0; i<vuelos.size();i++){
+
+            if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getOrigin())  && arreglo[1].equalsIgnoreCase(vuelos.get(i).getDestination())){
+                System.out.println("Se encontro vuelo directo: ");
+                System.out.println( vuelos.get(i).getName() +" from: "+ vuelos.get(i).getOrigin() + " to: "+ vuelos.get(i).getDestination());
+                vuelos.remove(vuelos.get(i));
+                System.out.println("\n");
+            }
+        }
+
+        ArrayList<Flight> temp = new ArrayList<>();
+
+        // 1 escala...
+        for (int i =0; i<vuelos.size();i++){
+
+            if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getOrigin()) ) {
+                temp.add(vuelos.get(i));
+
+                for (int j =0; j<vuelos.size();j++){
+
+                    if (temp.get(0).getDestination().equalsIgnoreCase( vuelos.get(j).getOrigin()) && vuelos.get(j).getDestination().equalsIgnoreCase(arreglo[1])  ){
+
+                        temp.add(vuelos.get(j));
+
+                        System.out.println("Se encontro vuelo con 1 sola escala: ");
+                        print(temp);
+
+                        definitivo.add(temp);
+
+                    }
+                }
+                temp.clear();
+            }
+        }
+
+
+        // 2 escala...
+        for (int i =0; i<vuelos.size();i++){
+
+            if (arreglo[0].equalsIgnoreCase( vuelos.get(i).getOrigin())) {
+
+                temp.add(vuelos.get(i));
+
+                for (int j =0; j<vuelos.size();j++){
+
+                    if (temp.get(0).getDestination().equalsIgnoreCase( vuelos.get(j).getOrigin())){
+
+                        temp.add(vuelos.get(j));
+
+                        for (int k =0; k<vuelos.size();k++){
+
+                            if (temp.get(1).getDestination().equalsIgnoreCase( vuelos.get(k).getOrigin()) && vuelos.get(k).getDestination().equalsIgnoreCase( arreglo[1])){
+                                temp.add(vuelos.get(k));
+                                System.out.println("Se encontro vuelo con 2 escalas: ");
+                                print(temp);
+                            }
+
+                        }
+                        temp.remove(1);
+
+                    }
+
+                }
+                temp.clear();
+            }
         }
     }
+
+    public static void print(ArrayList<Flight> arreglo){
+        for (Flight i : arreglo) {
+            System.out.println("Avion: " + i.getName() + " (from: "+i.getOrigin() + " to: "+i.getDestination()+ ")");
+        }
+        System.out.println("\n");
+    }
+
+
 
 }
