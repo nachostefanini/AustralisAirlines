@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Sandbox2 {
     public static void main(String[] args) {
-        SeatMap asientos = new SeatMap(3,3);
+        SeatMap asientos = new SeatMap(5,5,1,4);
 
         //Creo los aviones
         Airplane test1 = new Airplane(asientos,"Test1");

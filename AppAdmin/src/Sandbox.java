@@ -4,12 +4,22 @@ public class Sandbox {
         //For admin to do
         int row = Scanner.getInt("Insert the number of rows: ");
         int column = Scanner.getInt("Insert the number of columns: ");
-        SeatMap a = new SeatMap(row,column);
+
+        int fc = 0;
+        int c = 0;
+
+        while ((fc + c) != row){
+            fc = Scanner.getInt("Insert the number of first class rows: ");
+            c = Scanner.getInt("Insert the number of couch rows: ");
+        }
+
+        SeatMap a = new SeatMap(row,column,fc,c);
 
         //For client to do
         int pax = Scanner.getInt("Insert quantity: ");
 
         int count = 0;
+
         while (count<pax){
 
             a.print();
@@ -24,7 +34,7 @@ public class Sandbox {
                     if (a.getMap()[rowTemp-1][columnTemp-1].isOccupied() == true){
                         a.getMap()[rowTemp-1][columnTemp-1].setStatus(false);
                         System.out.println("You succesfully reserved the seat: " + a.getMap()[rowTemp-1][columnTemp-1].printName() + "\n");
-                        a.getMap()[rowTemp-1][columnTemp-1].setName(" X ");
+                        a.getMap()[rowTemp-1][columnTemp-1].replaceName(" FULL  ");
                         count++;
 
                     }else {
@@ -35,9 +45,10 @@ public class Sandbox {
                     System.out.println("Try again...");
                 }
 
-                }else {
+            }else {
                 System.out.println("Try again...");
-                    }
-                }
+            }
+        }
     }
+
 }

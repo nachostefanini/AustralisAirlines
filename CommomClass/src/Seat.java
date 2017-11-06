@@ -1,18 +1,25 @@
-public class Seat {
+public abstract class Seat {
 
-    String name;
     boolean status = true;
 
-    public Seat(String name) {
-        this.name = name;
+    String name;
+    int price;
+    String type;
+
+
+    public Seat (){
     }
 
     public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String string) {
+        name += string;
+    }
+
+    public void replaceName(String name){
+        this.name=name;
     }
 
     public boolean isOccupied(){
@@ -23,5 +30,5 @@ public class Seat {
         return name;
     }
 
-
 }
+
