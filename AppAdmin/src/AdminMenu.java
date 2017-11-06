@@ -1,8 +1,3 @@
-package AppAdmin;
-import Scanner.Scanner;
-
-import javax.print.attribute.standard.MediaSize;
-
 public class AdminMenu {
     static Apifake api = new Apifake();
 

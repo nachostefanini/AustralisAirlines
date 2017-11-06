@@ -1,5 +1,3 @@
-package AppAdmin;
-
 public class Flight {
     Airport from;
     Airport to;

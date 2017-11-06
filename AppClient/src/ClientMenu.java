@@ -1,6 +1,3 @@
-package AppClient;
-import Scanner.Scanner;
-
 public class ClientMenu {
     public static void main(String[] args) {
 
