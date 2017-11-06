@@ -7,16 +7,15 @@ public class Flight {
 
     Airport[] data = new Airport[2];
 
-    public Flight(Airport from, Airport to, Airplane airplane, String code ,Pilot pilot) {
+    public Flight(Airport from, Airport to, Airplane airplane, String code, Pilot pilot, Airport[] data) {
         this.from = from;
         this.to = to;
         this.airplane = airplane;
-        this.pilot = pilot;
         this.code = code;
-
-        data[0] = from;
-        data[1] = to;
+        this.pilot = pilot;
+        this.data = data;
     }
+
     public Airport getAirportFrom() { return from; }
 
     public Airport getAirportTo() { return to; }

@@ -1,5 +1,6 @@
+import AppAdmin.Apifake;
 public class AdminMenu {
-    static Apifake api = new Apifake();
+    static Server api = new Server();
 
     public static void main(String[] args) {
 
