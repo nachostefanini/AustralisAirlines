@@ -49,12 +49,15 @@ public class Sandbox2 {
         listavuelos.add(g);
         listavuelos.add(h);
 
+        FlightList lista = new FlightList(listavuelos);
 
-        String array[] = new String[1];
-        array[0] = "ads";
-        array[1] = "asd";
+
+        String array[] = new String[2];
+        array[0] = "Argentina";
+        array[1] = "Venezuela";
+
         System.out.println(" ------------- Flight finder------------- ");
-       Apifake.find2(array);
+        lista.find(array);
 
 
     }
