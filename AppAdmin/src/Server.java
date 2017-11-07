@@ -111,7 +111,7 @@ public class Server {
             System.out.println("The pilot: " + aPilot.getName() + " " + aPilot.getSurname() + " " + dni + " has been succesfully added to the list");
         }
         try {
-            FileWriter writer = new FileWriter("list.txt");
+            FileWriter writer = new FileWriter("listPilot.txt");
             for (Pilot pilot: pilots) {
                 writer.write(String.valueOf(pilot));
                 writer.write("\n");
@@ -132,7 +132,7 @@ public class Server {
             }
         }
         try {
-            FileWriter writer = new FileWriter("list.txt");
+            FileWriter writer = new FileWriter("listPilot.txt");
             for (Pilot pilot: pilots) {
                 writer.write(String.valueOf(pilot));
                 writer.write("\n");
@@ -175,7 +175,7 @@ public class Server {
             System.out.println("The airplane with code " + newAirplane.getcode() + " has been succesfully added to the list");
         }
         try {
-            FileWriter writer = new FileWriter("list.txt");
+            FileWriter writer = new FileWriter("listAirplane.txt");
             for (Airplane airplane: airplanes) {
                 writer.write(String.valueOf(airplane));
                 writer.write("\n");
@@ -196,7 +196,7 @@ public class Server {
             }
         }
         try {
-            FileWriter writer = new FileWriter("list.txt");
+            FileWriter writer = new FileWriter("listAirplane.txt");
             for (Airplane airplane: airplanes) {
                 writer.write(String.valueOf(airplane));
                 writer.write("\n");
@@ -235,7 +235,7 @@ public class Server {
             airports.add(newairport);
             System.out.println("The airport with code " + newairport.getairportcode() + " has been succesfully added to the list");
         }try {
-            FileWriter writer = new FileWriter("list.txt");
+            FileWriter writer = new FileWriter("listAirports.txt");
             for (Airport airport: airports) {
                 writer.write(String.valueOf(airport));
                 writer.write("\n");
@@ -254,7 +254,7 @@ public class Server {
             } else {
                 System.out.println("the airport with code " + airportcode + " is not listed...");
             }try {
-                FileWriter writer = new FileWriter("list.txt");
+                FileWriter writer = new FileWriter("listAirports.txt");
                 for (Airport airport: airports) {
                     writer.write(String.valueOf(airport));
                     writer.write("\n");
@@ -300,7 +300,7 @@ public class Server {
                 vuelos.add(flight);
                 System.out.println("Flight Added");
             }try {
-                FileWriter writer = new FileWriter("list.txt");
+                FileWriter writer = new FileWriter("listFlight.txt");
                 for (Flight flight1: vuelos) {
                     writer.write(String.valueOf(flight1));
                     writer.write("\n");
@@ -322,7 +322,7 @@ public class Server {
                 }
             }
             try {
-                FileWriter writer = new FileWriter("list.txt");
+                FileWriter writer = new FileWriter("listFlight.txt");
                 for (Flight flight1: vuelos) {
                     writer.write(String.valueOf(flight1));
                     writer.write("\n");
