@@ -8,6 +8,17 @@ public class Server {
     ArrayList<Airport> airports = new ArrayList<>();
     static ArrayList<Flight> vuelos = new ArrayList<>();
 
+    public void addpilot(String name, String surname, String dni) {
+        Pilot newPilot = new Pilot(name, surname, dni);
+        for (int i = 0; i < pilots.size(); i++) {
+            if (pilots.get(i).getDni().equals(dni)) {
+                System.out.println("already exist a pilot with that DNI, please enter another...");
+            } else {
+                pilots.add(newPilot);
+                System.out.println("The Pilot with DNI " + dni + " has been succesfully added to the list");
+            }
+        }
+    }
     void quitpilot(String dni) {
         for (int i = 0; i < pilots.size(); i++) {
             if (pilots.get(i).getDni().equals(dni)) {
@@ -40,15 +51,15 @@ public class Server {
     }
 
     void printpilots() {
-        if (pilots.isEmpty()) {
-            System.out.println("The list of pilots is empty");
-        } else {
+        if (pilots.size()>0) {
             System.out.println("This is the list of pilots:");
             for (int i = 0; i < pilots.size(); i++) {
                 System.out.println("DNI: " + pilots.get(i).getDni() + " Name: " + pilots.get(i).getName() + " " + pilots.get(i).getSurname());
             }
+        }else {
+                System.out.println("The list of pilots is empty");
+            }
         }
-    }
 
 
     void addairplane(Airplane newAirplane) {
@@ -205,17 +216,5 @@ public class Server {
         System.out.println("\n");
     }
 
-    public void addpilot(String name, String surname, String dni) {
-        Pilot newPilot = new Pilot(name, surname, dni);
-        for (int i = 0; i < pilots.size(); i++) {
-
-            if (pilots.get(i).getDni().equals(dni)) {
-                System.out.println("already exist a pilot with that DNI, please enter another...");
-            } else {
-                pilots.add(newPilot);
-                System.out.println("The AppAdmin.Pilot with DNI " + newPilot.getDni() + " has been succesfully added to the list");
-            }
-        }
-    }
 }
 
