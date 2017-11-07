@@ -132,14 +132,9 @@ public class Apifake {
     }
 
      public void addflight (String airportCodeFrom, String airportCodeTo, String airplaneCode, String pilot, String code){
-        if(airports.containsKey(airportCodeFrom) && airports.containsKey(airportCodeTo) && airplanes.containsKey(airplaneCode) && pilots.containsKey(pilot)){
-                        Airport airportFrom = airports.get(airportCodeFrom);
-                        Airport airportTo = airports.get(airportCodeTo);
-                        Airplane airplane = airplanes.get(airplaneCode);
-                        Pilot pilotAssigned = pilots.get(pilot);
-                        Flight newflight = new Flight(airportFrom,airportTo,airplane,code,pilotAssigned);
-                        vuelos.add(newflight);
-                    }else {
+
+        if(){
+            }else {
             throw new RuntimeException("Verify your data");
                 }
             }
