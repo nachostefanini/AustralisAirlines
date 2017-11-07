@@ -135,11 +135,15 @@ public class AdminMenu {
                     break;
                 case 10:
                     String airportCodeFrom = Scanner.getString("Please enter the country of origin: ");
+                    Airport from = api.findAirport(airportCodeFrom);
                     String airportCodeTo = Scanner.getString("Please enter the country of destination: ");
+                    Airport to = api.findAirport(airportCodeTo);
                     String airplaneCode = Scanner.getString("Please enter the code of the airplane you want to asign ");
-                    String pilot = Scanner.getString("Please enter the dni of the pilot you want to asign");
+                    Airplane airplane = api.findAirplane(airplaneCode);
+                    String pilotDNI = Scanner.getString("Please enter the dni of the pilot you want to asign");
+                    Pilot pilot = api.findPilot(pilotDNI);
                     code = Scanner.getString("please enter a flight code");
-                    api.addflight(airportCodeFrom, airportCodeTo, airplaneCode, pilot, code);
+                    api.addflight(from, to, airplane, pilot, code);
                     break;
                 case 11:
                     code = Scanner.getString("please enter the flight code you want to erase");

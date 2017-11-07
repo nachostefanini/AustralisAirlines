@@ -19,7 +19,24 @@ public class Server {
         }
     }
     Airplane findAirplane (String airplane){
-    
+        for (int i = 0; i <airplanes.size() ; i++) {
+            if (airplanes.get(i).getcode().equals(airplane)){
+                return airplanes.get(i);
+            }
+        }return null;
+    }
+    Airport findAirport (String airport){
+        for (int i = 0; i < airports.size() ; i++) {
+            if (airports.get(i).getairportcode().equals(airport))
+                return airports.get(i);
+        }return null;
+    }
+    Pilot findPilot (String pilotDNI){
+        for (int i = 0; i <pilots.size() ; i++) {
+            if (pilots.get(i).getDni().equals(pilotDNI)){
+                return pilots.get(i);
+            }
+        }return null;
     }
 
     void printpilots() {
@@ -101,20 +118,10 @@ public class Server {
                 getairportcode().equals(to) && vuelos.get(i).getAirplane().getcode().equals(airplane)
      */
 
-    public void addflight(String from, String to, String airplane, String  pilot, String code) {
+    public void addflight(Airport from, Airport to, Airplane airplane, Pilot  pilot, String code) {
         for (int i = 0; i <vuelos.size() ; i++) {
-        if (vuelos.get(i).getCode().equals(code)) {
-            throw new RuntimeException("Verify your data");
-
-        } else {
-            for (int j = 0; j < airports.size() ; j++) {
-                if (airports.get(j).getairportcode().equals(from)){
-                    Airport airportFrom = airports.get(j);
-
-            }
-            Flight newflight = new Flight(from, to, airplane, code, pilot);
-            vuelos.add(newflight);
-            }
+            if(vuelos.get(i).getAirportFrom().equals(from)&&vuelos.get(i).getAirportTo().equals(to)&&vuelos.get(i).getAirplane().equals(airplane)&&vuelos.get(i).getPilot().equals(pilot)){
+            
         }
     }
 
