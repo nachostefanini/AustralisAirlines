@@ -18,6 +18,9 @@ public class Server {
             }
         }
     }
+    Airplane findAirplane (String airplane){
+    
+    }
 
     void printpilots() {
         if (pilots.isEmpty()) {
@@ -93,13 +96,25 @@ public class Server {
             }
         }
     }
+    /*
+    vuelos.get(i).getAirportFrom().getairportcode().equals(from) && vuelos.get(i).getAirportTo().
+                getairportcode().equals(to) && vuelos.get(i).getAirplane().getcode().equals(airplane)
+     */
 
-    public void addflight(Airport from, Airport to, Airplane airplane, Pilot pilot, String code) {
-        if (airports.contains(from) && airports.contains(to) && airplanes.contains(airplane) && pilots.contains(pilot)) {
+    public void addflight(String from, String to, String airplane, String  pilot, String code) {
+        for (int i = 0; i <vuelos.size() ; i++) {
+        if (vuelos.get(i).getCode().equals(code)) {
+            throw new RuntimeException("Verify your data");
+
+        } else {
+            for (int j = 0; j < airports.size() ; j++) {
+                if (airports.get(j).getairportcode().equals(from)){
+                    Airport airportFrom = airports.get(j);
+
+            }
             Flight newflight = new Flight(from, to, airplane, code, pilot);
             vuelos.add(newflight);
-        } else {
-            throw new RuntimeException("Verify your data");
+            }
         }
     }
 

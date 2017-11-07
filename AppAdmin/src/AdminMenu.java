@@ -138,7 +138,6 @@ public class AdminMenu {
                     String airportCodeTo = Scanner.getString("Please enter the country of destination: ");
                     String airplaneCode = Scanner.getString("Please enter the code of the airplane you want to asign ");
                     String pilot = Scanner.getString("Please enter the dni of the pilot you want to asign");
-                    // Pilot pilot = api.getpilot(dni);
                     code = Scanner.getString("please enter a flight code");
                     api.addflight(airportCodeFrom, airportCodeTo, airplaneCode, pilot, code);
                     break;

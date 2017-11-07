@@ -17,7 +17,7 @@ public class ClientMenu {
             switch(opc){
                 case 1:
                     System.out.flush();
-
+                    Server.findFlight();
                     System.out.println();
                     break;
                 case 2:
