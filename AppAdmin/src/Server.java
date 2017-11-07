@@ -119,9 +119,13 @@ public class Server {
      */
 
     public void addflight(Airport from, Airport to, Airplane airplane, Pilot  pilot, String code) {
-        for (int i = 0; i <vuelos.size() ; i++) {
-            if(vuelos.get(i).getAirportFrom().equals(from)&&vuelos.get(i).getAirportTo().equals(to)&&vuelos.get(i).getAirplane().equals(airplane)&&vuelos.get(i).getPilot().equals(pilot)){
-            
+        for (int i = 0; i < vuelos.size(); i++) {
+            if (vuelos.get(i).getAirportFrom().equals(from) && vuelos.get(i).getAirportTo().equals(to) && vuelos.get(i).getAirplane().equals(airplane) && vuelos.get(i).getPilot().equals(pilot)) {
+                System.out.println("The flight alrady exist");
+            } else {
+                Flight newFlight = new Flight(from, to, airplane, code, pilot);
+                vuelos.add(newFlight);
+            }
         }
     }
 
