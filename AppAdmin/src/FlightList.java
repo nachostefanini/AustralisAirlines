@@ -16,9 +16,9 @@ public class FlightList {
         //Si hay vuelo directo
         for (int i =0; i<vuelos.size();i++){
 
-            if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getairportcode())  && arreglo[1].equalsIgnoreCase(vuelos.get(i).getAirportTo().getairportcode())){
+            if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getlocation())  && arreglo[1].equalsIgnoreCase(vuelos.get(i).getAirportTo().getlocation())){
                 System.out.println("Direct flight found: ");
-                System.out.println( vuelos.get(i).getCode() +" from: "+ vuelos.get(i).getAirportFrom().getairportcode() + " to: "+ vuelos.get(i).getAirportTo().getairportcode());
+                System.out.println( vuelos.get(i).getCode() +" from: "+ vuelos.get(i).getAirportFrom().getlocation() + " to: "+ vuelos.get(i).getAirportTo().getlocation());
                 vuelos.remove(vuelos.get(i));
                 System.out.println("\n");
             }
@@ -29,12 +29,12 @@ public class FlightList {
         // 1 escala...
         for (int i =0; i<vuelos.size();i++){
 
-            if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getairportcode()) ) {
+            if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getlocation()) ) {
                 temp.add(vuelos.get(i));
 
                 for (int j =0; j<vuelos.size();j++){
 
-                    if (temp.get(0).getAirportTo().getairportcode().equalsIgnoreCase( vuelos.get(j).getAirportFrom().getairportcode()) && vuelos.get(j).getAirportTo().getairportcode().equalsIgnoreCase(arreglo[1])  ){
+                    if (temp.get(0).getAirportTo().getlocation().equalsIgnoreCase( vuelos.get(j).getAirportFrom().getlocation()) && vuelos.get(j).getAirportTo().getlocation().equalsIgnoreCase(arreglo[1])  ){
 
                         temp.add(vuelos.get(j));
 
@@ -53,19 +53,19 @@ public class FlightList {
         // 2 escala...
         for (int i =0; i<vuelos.size();i++){
 
-            if (arreglo[0].equalsIgnoreCase( vuelos.get(i).getAirportFrom().getairportcode())) {
+            if (arreglo[0].equalsIgnoreCase( vuelos.get(i).getAirportFrom().getlocation())) {
 
                 temp.add(vuelos.get(i));
 
                 for (int j =0; j<vuelos.size();j++){
 
-                    if (temp.get(0).getAirportFrom().getairportcode().equalsIgnoreCase( vuelos.get(j).getAirportFrom().getairportcode())){
+                    if (temp.get(0).getAirportFrom().getlocation().equalsIgnoreCase( vuelos.get(j).getAirportFrom().getlocation())){
 
                         temp.add(vuelos.get(j));
 
                         for (int k =0; k<vuelos.size();k++){
 
-                            if (temp.get(1).getAirportTo().getairportcode().equalsIgnoreCase( vuelos.get(k).getAirportFrom().getairportcode()) && vuelos.get(k).getAirportTo().getairportcode().equalsIgnoreCase( arreglo[1])){
+                            if (temp.get(1).getAirportTo().getlocation().equalsIgnoreCase( vuelos.get(k).getAirportFrom().getlocation()) && vuelos.get(k).getAirportTo().getlocation().equalsIgnoreCase( arreglo[1])){
                                 temp.add(vuelos.get(k));
                                 System.out.println("Flight with two stops found: ");
                                 print(temp);
@@ -96,7 +96,7 @@ public class FlightList {
 //    }
     public void print(ArrayList<Flight> arreglo){
         for (Flight i : arreglo) {
-            System.out.println("Flight: " + i.getCode() + " (from: "+i.getAirportFrom().getairportcode() + " to: "+i.getAirportTo().getairportcode()+ ")");
+            System.out.println("Flight: " + i.getCode() + " (from: "+i.getAirportFrom().getlocation() + " to: "+i.getAirportTo().getlocation()+ ")");
         }
         System.out.println("\n");
     }

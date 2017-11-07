@@ -5,7 +5,7 @@ public class AdminMenu {
     public static void main(String[] args) {
 
 
-                    SeatMap asientos = new SeatMap(3,3);
+                    SeatMap asientos = new SeatMap(5,5,1,4);
 /*
                     //Creo los aviones
                     Airplane test1 = new Airplane(asientos,"Test1");
@@ -94,7 +94,14 @@ public class AdminMenu {
                     String code = Scanner.getString("Please enter the code of the airplane: ");
                     int rows = Scanner.getInt("Please enter the number of rows of seats: ");
                     int columns = Scanner.getInt("Please enter the number of columns of seats: ");
-                    SeatMap seats = new SeatMap(rows, columns);
+                    int fc = 0;
+                    int c = 0;
+
+                    while ((fc + c) != rows){
+                        fc = Scanner.getInt("Insert the number of first class rows: ");
+                        c = Scanner.getInt("Insert the number of couch rows: ");
+                    }
+                    SeatMap seats = new SeatMap(rows, columns,fc,c);
                     Airplane newairplane = new Airplane(seats, code);
                     api.addairplane(newairplane);
                     break;
