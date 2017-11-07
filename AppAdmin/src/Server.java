@@ -1,8 +1,5 @@
-import AppAdmin.Airplane;
-import AppAdmin.Airport;
-import AppAdmin.Pilot;
-
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Server {
@@ -10,21 +7,6 @@ public class Server {
     ArrayList<Airplane> airplanes = new ArrayList<>();
     ArrayList<Airport> airports = new ArrayList<>();
     static ArrayList<Flight> vuelos = new ArrayList<>();
-
-/*
-    void addpilot(Pilot newPilot) {
-        String dni = newPilot.getDni();
-        for (int i = 0; i < pilots.size(); i++) {
-
-            if (pilots.get(i).getDni().equals(dni)) {
-                System.out.println("already exist a pilot with that DNI, please enter another...");
-            } else {
-                pilots.add(newPilot);
-                System.out.println("The AppAdmin.Pilot with DNI " + newPilot.getDni() + " has been succesfully added to the list");
-            }
-        }
-    }*/
-
 
     void quitpilot(String dni) {
         for (int i = 0; i < pilots.size(); i++) {
@@ -92,9 +74,8 @@ public class Server {
 
     void quitairport(String airportcode) {
         for (int i = 0; i < airports.size(); i++) {
-
             if (airports.get(i).getairportcode().equals(airportcode)) {
-                airports.remove(airportcode);
+                airports.remove(i);
                 System.out.println("the airport whith code " + airportcode + " has been deleted succesfully...");
             } else {
                 System.out.println("the airport with code " + airportcode + " is not listed...");
@@ -112,26 +93,6 @@ public class Server {
             }
         }
     }
-    /*
-    Airport getairportFrom(String airportcodefrom) {
-        return airports.get(airportcodefrom);
-    }
-
-    Airport getairportTo(String airportcodeto) {
-
-        return airports.get(airportcodeto);
-    }
-
-    Airplane getairplane(String airplanecode) {
-
-        return airplanes.get(airplanecode);
-    }
-
-    Pilot getpilot(String dni) {
-
-        return pilots.get(dni);
-    }
-    */
 
     public void addflight(Airport from, Airport to, Airplane airplane, Pilot pilot, String code) {
         if (airports.contains(from) && airports.contains(to) && airplanes.contains(airplane) && pilots.contains(pilot)) {
@@ -144,15 +105,13 @@ public class Server {
 
     public void quitflight(String code) {
 
-
         for (int i = 0; i < vuelos.size(); i++) {
-
-            if (vuelos.get(i).getCode().equalsIgnoreCase(code)) {
+            if (vuelos.get(i).getCode().equals(code)) {
                 vuelos.remove(i);
                 System.out.println("The flight with the code " + code + " has been deleted successfully...");
-                break;
+            } else {
+                System.out.println("The flight with code " + code + " does not exist.");
             }
-//            System.out.println("The flight with code " + code + " does not exist.");
         }
     }
 
@@ -163,29 +122,10 @@ public class Server {
         System.out.println("\n");
     }
 
-    public static void find(String from, String to) {
-        for (int j = 0; j < vuelos.size(); j++) {
-            if (from.equals(vuelos.get(j).getAirportFrom().getairportcode()) && to.equals(vuelos.get(j).getAirportTo().getairportcode())) {
-                Airport airportFrom = vuelos.get(j).getAirportFrom();
-                Airport airportTo = vuelos.get(j).getAirportTo();
-                for (int i = 0; i < vuelos.size(); i++) {
-                    if (airportFrom.equals(vuelos.get(i).getAirportFrom()) && airportTo.equals(vuelos.get(i).getAirportTo())) {
-                        System.out.println(vuelos.get(i).getCode());
-                    } else {
-                        System.out.println("Sorry, but the flight doesn't exist");
-                    }
-                }
-            }
-        }
-    }
-
     public static void findFlight(String[] arreglo) {
         ArrayList<ArrayList<Flight>> definitivo = new ArrayList<>();
-
-
         //Si hay vuelo directo
         for (int i = 0; i < vuelos.size(); i++) {
-
             if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getairportcode()) && arreglo[1].equalsIgnoreCase(vuelos.get(i).getAirportTo().getairportcode())) {
                 System.out.println("Se encontro vuelo directo: ");
                 System.out.println(vuelos.get(i).getCode() + " from: " + vuelos.get(i).getAirportFrom().getairportcode() + " to: " + vuelos.get(i).getAirportTo().getairportcode());
@@ -193,61 +133,41 @@ public class Server {
                 System.out.println("\n");
             }
         }
-
         ArrayList<Flight> temp = new ArrayList<>();
-
         // 1 escala...
         for (int i = 0; i < vuelos.size(); i++) {
-
             if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getairportcode())) {
                 temp.add(vuelos.get(i));
-
                 for (int j = 0; j < vuelos.size(); j++) {
-
                     if (temp.get(0).getAirportTo().getairportcode().equalsIgnoreCase(vuelos.get(j).getAirportFrom().getairportcode()) && vuelos.get(j).getAirportTo().getairportcode().equalsIgnoreCase(arreglo[1])) {
-
                         temp.add(vuelos.get(j));
-
                         System.out.println("Se encontro vuelo con 1 sola escala: ");
                         printFlight(temp);
-
                         definitivo.add(temp);
-
                     }
                 }
                 temp.clear();
             }
         }
-
-
         // 2 escala...
         for (int i = 0; i < vuelos.size(); i++) {
 
             if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getairportcode())) {
-
                 temp.add(vuelos.get(i));
-
                 for (int j = 0; j < vuelos.size(); j++) {
-
                     if (temp.get(0).getAirportTo().getairportcode().equalsIgnoreCase(vuelos.get(j).getAirportFrom().getairportcode())) {
-
                         temp.add(vuelos.get(j));
-
                         for (int k = 0; k < vuelos.size(); k++) {
-
                             if (temp.get(1).getAirportTo().getairportcode().equalsIgnoreCase(vuelos.get(k).getAirportFrom().getairportcode()) && vuelos.get(k).getAirportTo().getairportcode().equalsIgnoreCase(arreglo[1])) {
                                 temp.add(vuelos.get(k));
                                 System.out.println("Se encontro vuelo con 2 escalas: ");
                                 printFlight(temp);
                             }
-
                         }
                         temp.remove(1);
-
                     }
-
                 }
-                temp.clear();
+            temp.clear();
             }
         }
     }

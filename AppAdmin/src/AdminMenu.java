@@ -1,4 +1,3 @@
-import AppAdmin.Apifake;
 public class AdminMenu {
     static Server api = new Server();
 
