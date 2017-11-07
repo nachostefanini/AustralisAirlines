@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Server {
 
@@ -8,7 +10,6 @@ public class Server {
     ArrayList<Airplane> airplanes = new ArrayList<>();
     ArrayList<Airport> airports = new ArrayList<>();
     ArrayList<Flight> vuelos = new ArrayList<>();
-
 
     public void find(String[] arreglo) {
 
@@ -99,7 +100,7 @@ public class Server {
         return null;
     }
 
-    void addpilot(Pilot aPilot) {
+    void addpilot(Pilot aPilot) throws IOException {
 
         String dni = aPilot.getDni();
 
@@ -109,18 +110,15 @@ public class Server {
             pilots.add(aPilot);
             System.out.println("The pilot: " + aPilot.getName() + " " + aPilot.getSurname() + " " + dni + " has been succesfully added to the list");
         }
-    }
-
-
-    public void addpilot(String name, String surname, String dni) {
-        Pilot newPilot = new Pilot(name, surname, dni);
-        for (int i = 0; i < pilots.size(); i++) {
-            if (pilots.get(i).getDni().equals(dni)) {
-                System.out.println("already exist a pilot with that DNI, please enter another...");
-            } else {
-                pilots.add(newPilot);
-                System.out.println("The Pilot with DNI " + dni + " has been succesfully added to the list");
+        try {
+            FileWriter writer = new FileWriter("list.txt");
+            for (Pilot pilot: pilots) {
+                writer.write(String.valueOf(pilot));
+                writer.write("\n");
             }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -133,6 +131,17 @@ public class Server {
                 System.out.println("");
             }
         }
+        try {
+            FileWriter writer = new FileWriter("list.txt");
+            for (Pilot pilot: pilots) {
+                writer.write(String.valueOf(pilot));
+                writer.write("\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     void printpilots() {
@@ -165,6 +174,16 @@ public class Server {
             airplanes.add(newAirplane);
             System.out.println("The airplane with code " + newAirplane.getcode() + " has been succesfully added to the list");
         }
+        try {
+            FileWriter writer = new FileWriter("list.txt");
+            for (Airplane airplane: airplanes) {
+                writer.write(String.valueOf(airplane));
+                writer.write("\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     void quitairplane(String code) {
@@ -175,6 +194,16 @@ public class Server {
             } else {
                 System.out.println("the pilot with code " + code + " is not listed...");
             }
+        }
+        try {
+            FileWriter writer = new FileWriter("list.txt");
+            for (Airplane airplane: airplanes) {
+                writer.write(String.valueOf(airplane));
+                writer.write("\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -205,6 +234,15 @@ public class Server {
         } else {
             airports.add(newairport);
             System.out.println("The airport with code " + newairport.getairportcode() + " has been succesfully added to the list");
+        }try {
+            FileWriter writer = new FileWriter("list.txt");
+            for (Airport airport: airports) {
+                writer.write(String.valueOf(airport));
+                writer.write("\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -215,6 +253,15 @@ public class Server {
                 System.out.println("the airport whith code " + airportcode + " has been deleted succesfully...");
             } else {
                 System.out.println("the airport with code " + airportcode + " is not listed...");
+            }try {
+                FileWriter writer = new FileWriter("list.txt");
+                for (Airport airport: airports) {
+                    writer.write(String.valueOf(airport));
+                    writer.write("\n");
+                }
+                writer.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -252,6 +299,15 @@ public class Server {
             } else {
                 vuelos.add(flight);
                 System.out.println("Flight Added");
+            }try {
+                FileWriter writer = new FileWriter("list.txt");
+                for (Flight flight1: vuelos) {
+                    writer.write(String.valueOf(flight1));
+                    writer.write("\n");
+                }
+                writer.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
             }
         }
 
@@ -264,6 +320,16 @@ public class Server {
                 } else {
                     System.out.println("The flight with code " + code + " does not exist.");
                 }
+            }
+            try {
+                FileWriter writer = new FileWriter("list.txt");
+                for (Flight flight1: vuelos) {
+                    writer.write(String.valueOf(flight1));
+                    writer.write("\n");
+                }
+                writer.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
             }
         }
 
