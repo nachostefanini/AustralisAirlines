@@ -1,7 +1,6 @@
 import java.util.Calendar;
 
 public class Flight {
-    Calendar 
     Airport from;
     Airport to;
     Airplane airplane;

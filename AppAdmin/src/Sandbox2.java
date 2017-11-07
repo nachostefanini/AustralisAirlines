@@ -4,6 +4,7 @@ public class Sandbox2 {
     public static void main(String[] args) {
         SeatMap asientos = new SeatMap(5,5,1,4);
 
+
         //Creo los aviones
         Airplane test1 = new Airplane(asientos,"Test1");
         Airplane test2 = new Airplane(asientos,"Test2");
@@ -12,30 +13,32 @@ public class Sandbox2 {
         Airplane test5 = new Airplane(asientos,"Test5");
         Airplane test6 = new Airplane(asientos,"Test6");
         Airplane test7 = new Airplane(asientos,"Test7");
-        Airplane test8 = new Airplane(asientos,"Test8");
 
-        //Creo pilotos
-        Pilot piloto = new Pilot("Juan","Perez","1234567");
+
 
         //Creo los aeropuertos
-        Airport testa = new Airport("asd", "Argentina");
-        Airport testb = new Airport("ads", "Venezuela");
-        Airport testc = new Airport("dsg", "Colombia");
-        Airport testd = new Airport("aew", "Brasil");
-        Airport teste = new Airport("ast", "Peru");
-        Airport testf = new Airport("ass", "Uruguay");
-        Airport testg = new Airport("asa", "Chile");
-        Airport testh = new Airport("add", "Mexico");
+        Airport arg = new Airport("ARG001", "Argentina");
+        Airport ven = new Airport("VEN001", "Venezuela");
+        Airport col = new Airport("COL001", "Colombia");
+        Airport bra = new Airport("BRA001", "Brasil");
+        Airport per = new Airport("PER001", "Peru");
+        Airport uru = new Airport("URU001", "Uruguay");
+        Airport chi = new Airport("CHI001", "Chile");
+        Airport mex = new Airport("MEX001", "Mexico");
+
+
+        //Creo pilotos
+        Pilot juan = new Pilot("Juan","Perez","1234567");
 
         //Creo los vuelos
-        Flight a = new Flight(testa, testb,test1,"F01",piloto);
-        Flight b = new Flight(testb,testc,test2,"F02",piloto);
-        Flight c = new Flight(testc,testd,test3,"F03",piloto);
-        Flight d = new Flight(testd,teste,test4,"F04",piloto);
-        Flight e = new Flight(teste,testf,test5,"F05",piloto);
-        Flight f = new Flight(testf,testg,test6,"F06",piloto);
-        Flight g = new Flight(testg,testh,test7,"F07",piloto);
-        Flight h = new Flight(testh,testa,test8,"F08",piloto);
+
+        Flight a = new Flight(arg, ven,test1,"F01",juan);
+        Flight b = new Flight(ven,col,test2,"F02",juan);
+        Flight c = new Flight(col, bra,test3,"F03",juan);
+        Flight d = new Flight(arg, col,test4,"F04",juan);
+        Flight e = new Flight(arg, bra,test5,"F05",juan);
+        Flight f = new Flight(col, ven,test6,"F06",juan);
+        Flight g = new Flight(ven, bra,test7,"F07",juan);
 
 
         //Creo la lista de vuelos
@@ -47,14 +50,13 @@ public class Sandbox2 {
         listavuelos.add(e);
         listavuelos.add(f);
         listavuelos.add(g);
-        listavuelos.add(h);
 
         FlightList lista = new FlightList(listavuelos);
 
 
-        String array[] = new String[2];
+        String[] array = new String[2];
         array[0] = "Argentina";
-        array[1] = "Venezuela";
+        array[1] = "Brasil";
 
         System.out.println(" ------------- Flight finder------------- ");
         lista.find(array);

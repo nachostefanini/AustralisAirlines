@@ -31,8 +31,14 @@ public class SeatMap {
         map = new Seat[row][column];
         map = fillSeatMap(map);
 
+    }
 
+    public int getRow() {
+        return row;
+    }
 
+    public int getColumn() {
+        return column;
     }
 
     public Seat[][] getMap() {

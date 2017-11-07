@@ -7,7 +7,7 @@ public class Airplane {
         this.code = code;
     }
 
-    public SeatMap getseats() {
+    public SeatMap getSeatMap() {
         return seatMap;
     }
 
