@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/AppClient/AppClient.iml" filepath="$PROJECT_DIR$/AppClient/AppClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/AppPilot/AppPilot.iml" filepath="$PROJECT_DIR$/AppPilot/AppPilot.iml" />
       <module fileurl="file://$PROJECT_DIR$/Australis.iml" filepath="$PROJECT_DIR$/Australis.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CommomClass/CommomClass.iml" filepath="$PROJECT_DIR$/CommomClass/CommomClass.iml" />
       <module fileurl="file://$PROJECT_DIR$/Server/Server.iml" filepath="$PROJECT_DIR$/Server/Server.iml" />
     </modules>
   </component>

@@ -1,3 +1,5 @@
+import AppAdmin.Airplane;
+import AppAdmin.Airport;
 import AppAdmin.Pilot;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ public class Server {
     ArrayList<Airport> airports = new ArrayList<>();
     static ArrayList<Flight> vuelos = new ArrayList<>();
 
-
+/*
     void addpilot(Pilot newPilot) {
         String dni = newPilot.getDni();
         for (int i = 0; i < pilots.size(); i++) {
@@ -21,7 +23,7 @@ public class Server {
                 System.out.println("The AppAdmin.Pilot with DNI " + newPilot.getDni() + " has been succesfully added to the list");
             }
         }
-    }
+    }*/
 
 
     void quitpilot(String dni) {
@@ -40,10 +42,12 @@ public class Server {
             System.out.println("The list of pilots is empty");
         } else {
             System.out.println("This is the list of pilots:");
-            for (int i = 0; i < pilots.size() ; i++) {
-            System.out.println("DNI: " + pilots.get(i).getDni() + " Name: " + pilots.get(i).getName() + " " + pilots.get(i).getSurname());
+            for (int i = 0; i < pilots.size(); i++) {
+                System.out.println("DNI: " + pilots.get(i).getDni() + " Name: " + pilots.get(i).getName() + " " + pilots.get(i).getSurname());
+            }
         }
     }
+
 
     void addairplane(Airplane newAirplane) {
         String code = newAirplane.getcode();
@@ -87,11 +91,14 @@ public class Server {
     }
 
     void quitairport(String airportcode) {
-        if (airports.containsKey(airportcode)) {
-            airports.remove(airportcode);
-            System.out.println("the airport whith code " + airportcode + " has been deleted succesfully...");
-        } else {
-            System.out.println("the airport with code " + airportcode + " is not listed...");
+        for (int i = 0; i < airports.size(); i++) {
+
+            if (airports.get(i).getairportcode().equals(airportcode)) {
+                airports.remove(airportcode);
+                System.out.println("the airport whith code " + airportcode + " has been deleted succesfully...");
+            } else {
+                System.out.println("the airport with code " + airportcode + " is not listed...");
+            }
         }
     }
 
@@ -100,10 +107,12 @@ public class Server {
             System.out.println("The list of airports is empty");
         } else {
             System.out.println("This is the list of airports:");
-            airports.forEach((String, Airport) -> System.out.println("Code: " + String + " Location: " + Airport.getlocation()));
+            for (int j = 0; j < airports.size(); j++) {
+                System.out.println("Airport code: "+ airports.get(j).getairportcode() + ", Location: " + airports.get(j).getlocation());
+            }
         }
     }
-
+    /*
     Airport getairportFrom(String airportcodefrom) {
         return airports.get(airportcodefrom);
     }
@@ -122,14 +131,11 @@ public class Server {
 
         return pilots.get(dni);
     }
+    */
 
-    public void addflight(String airportCodeFrom, String airportCodeTo, String airplaneCode, String pilot, String code) {
-        if (airports.containsKey(airportCodeFrom) && airports.containsKey(airportCodeTo) && airplanes.containsKey(airplaneCode) && pilots.containsKey(pilot)) {
-            Airport airportFrom = airports.get(airportCodeFrom);
-            Airport airportTo = airports.get(airportCodeTo);
-            Airplane airplane = airplanes.get(airplaneCode);
-            Pilot pilotAssigned = pilots.get(pilot);
-            Flight newflight = new Flight(airportFrom, airportTo, airplane, code, pilotAssigned);
+    public void addflight(Airport from, Airport to, Airplane airplane, Pilot pilot, String code) {
+        if (airports.contains(from) && airports.contains(to) && airplanes.contains(airplane) && pilots.contains(pilot)) {
+            Flight newflight = new Flight(from, to, airplane, code, pilot);
             vuelos.add(newflight);
         } else {
             throw new RuntimeException("Verify your data");
@@ -157,7 +163,7 @@ public class Server {
         System.out.println("\n");
     }
 
-    public static void findFlight(String from, String to) {
+    public static void find(String from, String to) {
         for (int j = 0; j < vuelos.size(); j++) {
             if (from.equals(vuelos.get(j).getAirportFrom().getairportcode()) && to.equals(vuelos.get(j).getAirportTo().getairportcode())) {
                 Airport airportFrom = vuelos.get(j).getAirportFrom();
@@ -173,7 +179,7 @@ public class Server {
         }
     }
 
-    public static void find2(String[] arreglo) {
+    public static void findFlight(String[] arreglo) {
         ArrayList<ArrayList<Flight>> definitivo = new ArrayList<>();
 
 
@@ -252,4 +258,18 @@ public class Server {
         }
         System.out.println("\n");
     }
+
+    public void addpilot(String name, String surname, String dni) {
+        Pilot newPilot = new Pilot(name, surname, dni);
+        for (int i = 0; i < pilots.size(); i++) {
+
+            if (pilots.get(i).getDni().equals(dni)) {
+                System.out.println("already exist a pilot with that DNI, please enter another...");
+            } else {
+                pilots.add(newPilot);
+                System.out.println("The AppAdmin.Pilot with DNI " + newPilot.getDni() + " has been succesfully added to the list");
+            }
+        }
+    }
 }
+

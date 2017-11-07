@@ -73,10 +73,7 @@ public class AdminMenu {
                     String name = Scanner.getString("Enter the name of the pilot: ");
                     String surname = Scanner.getString("Enter the surname of the pilot: ");
                     String dni = Scanner.getString("Enter the DNI of the pilot: ");
-                    Pilot newPilot = new Pilot(name,surname,dni);
-                    api.addpilot(newPilot);
-                    //Pilot newPilot = new Pilot(name, surname, dni);
-                    //api.addpilot(newPilot);
+                    api.addpilot(name, surname,dni);
                     break;
                 case 2:
                     System.out.flush();
@@ -130,8 +127,6 @@ public class AdminMenu {
                     System.out.flush();
                     airportcode = Scanner.getString("Please enter the code of the airport you want to quit ");
                     api.quitairport(airportcode);
-                    airportcode = Scanner.getString("Please enter the code of the airport you want to eliminate: ");
-                    api.quitairport(airportcode);
                     System.out.println();
                     break;
                 case 9:
@@ -162,7 +157,10 @@ public class AdminMenu {
                     String destiny = Scanner.getString("Please enter the airport of destiny: ");
                     System.out.println("\n");
                     System.out.println(" ------------- Flight finder------------- ");
-                    api.findFlight(origin, destiny);
+                    String data[] = new String[1];
+                    data[0] = origin;
+                    data[1] = destiny;
+                    api.findFlight(data);
                     break;
                 case 14:
                     System.out.flush();

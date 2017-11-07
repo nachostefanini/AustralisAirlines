@@ -1,11 +1,11 @@
-public class Vuelos {
+public class Flight {
     Airport from;
     Airport to;
     Airplane airplane;
     String code;
     Pilot pilot;
 
-    public Vuelos(Airport from, Airport to, Airplane airplane, String code, Pilot pilot) {
+    public Flight(Airport from, Airport to, Airplane airplane, String code, Pilot pilot) {
         this.from = from;
         this.to = to;
         this.airplane = airplane;
@@ -13,23 +13,22 @@ public class Vuelos {
         this.pilot = pilot;
     }
 
-    public Airport getFrom() {
-        return from;
-    }
+    public Airport getAirportFrom() { return from; }
 
-    public Airport getTo() {
-        return to;
-    }
+    public Airport getAirportTo() { return to; }
 
     public Airplane getAirplane() {
         return airplane;
     }
 
-    public String getCode() {
-        return code;
-    }
-
     public Pilot getPilot() {
         return pilot;
     }
+
+    public String getCode(){
+        return code;
+    }
+
+
+
 }
