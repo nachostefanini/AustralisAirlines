@@ -17,7 +17,7 @@ public class FlightList {
         for (int i =0; i<vuelos.size();i++){
 
             if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getlocation())  && arreglo[1].equalsIgnoreCase(vuelos.get(i).getAirportTo().getlocation())){
-                System.out.println("Direct flight found: ");
+                System.out.println("Se encontro vuelo directo: ");
                 System.out.println( vuelos.get(i).getCode() +" from: "+ vuelos.get(i).getAirportFrom().getlocation() + " to: "+ vuelos.get(i).getAirportTo().getlocation());
                 vuelos.remove(vuelos.get(i));
                 System.out.println("\n");
@@ -38,7 +38,7 @@ public class FlightList {
 
                         temp.add(vuelos.get(j));
 
-                        System.out.println("Flight with one stop found: ");
+                        System.out.println("Se encontro vuelo con 1 sola escala: ");
                         print(temp);
 
                         definitivo.add(temp);
@@ -59,7 +59,7 @@ public class FlightList {
 
                 for (int j =0; j<vuelos.size();j++){
 
-                    if (temp.get(0).getAirportFrom().getlocation().equalsIgnoreCase( vuelos.get(j).getAirportFrom().getlocation())){
+                    if (temp.get(0).getAirportTo().getlocation().equalsIgnoreCase( vuelos.get(j).getAirportFrom().getlocation())){
 
                         temp.add(vuelos.get(j));
 
@@ -67,7 +67,7 @@ public class FlightList {
 
                             if (temp.get(1).getAirportTo().getlocation().equalsIgnoreCase( vuelos.get(k).getAirportFrom().getlocation()) && vuelos.get(k).getAirportTo().getlocation().equalsIgnoreCase( arreglo[1])){
                                 temp.add(vuelos.get(k));
-                                System.out.println("Flight with two stops found: ");
+                                System.out.println("Se encontro vuelo con 2 escalas: ");
                                 print(temp);
                             }
 
@@ -81,19 +81,9 @@ public class FlightList {
             }
         }
 
-// Total
-//        System.out.println("Total");
-//            return definitivo;
     }
 
-    //Metodos para imprmir
 
-    //It doesnt work
-//    public void pasar(ArrayList<ArrayList<Flight>> arreglo){
-//        for (ArrayList<Flight> i: arreglo) {
-//            print(i);
-//        }
-//    }
     public void print(ArrayList<Flight> arreglo){
         for (Flight i : arreglo) {
             System.out.println("Flight: " + i.getCode() + " (from: "+i.getAirportFrom().getlocation() + " to: "+i.getAirportTo().getlocation()+ ")");

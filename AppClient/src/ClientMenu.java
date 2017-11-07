@@ -1,5 +1,9 @@
 public class ClientMenu {
-    public static void main(String[] args) {
+
+    public  static void main(String[] args) {
+
+        Server Server = new Server();
+
 
         while(true){
             System.out.println("+--------------------------------------------+");
@@ -16,8 +20,28 @@ public class ClientMenu {
 
             switch(opc){
                 case 1:
-                    System.out.flush();
-                    System.out.println();
+
+                    String from = Scanner.getString("From: ");
+                    String to = Scanner.getString("To: ");
+                    int quantity = Scanner.getInt("Quantity: ");
+//                    int stops = Scanner.getInt("Stops: ");
+
+                    //Priemr paso, busco flights
+//                    System.out.println(" ------------- Flight finder------------- ");
+
+                    String[] data = new String[2];
+                    data[0] = from;
+                    data[1] = to;
+
+                    Server.find(data);
+
+                    //2 Le pido q ingrese el flight q quiere comprar
+                    String flight = Scanner.getString("Insert the Flight you want: ");
+
+                    //Habria q validarlo
+
+                    Server.startPurchase(flight,quantity);
+
                     break;
                 case 2:
                     System.out.flush();
