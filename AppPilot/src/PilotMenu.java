@@ -1,5 +1,8 @@
+import java.util.ArrayList;
+
 public class PilotMenu {
     public static void main(String[] args) {
+        ServerMOCK server = new ServerMOCK();
         while (true) {
             System.out.println("+--------------------------------------------+");
             System.out.println("              Australis Airlines              ");
@@ -20,16 +23,18 @@ public class PilotMenu {
             switch (opc) {
                 case 1:
                     System.out.flush();
+                    String id = Scanner.getString("Please insert your ID");
+                    ArrayList<String> flightOfPilots = server.printFlight(id);
+                    for (int i = 0; i < flightOfPilots.size() ; i++) {
+                        System.out.println("Flight assignated: " + flightOfPilots.get(i));
+                    }
                     System.out.println();
                     break;
                 case 2:
                     System.out.flush();
-                    System.out.println();
-                    break;
-                case 3:
-                    System.out.flush();
-                    System.out.println("Thank for use this App!");
+                    System.out.println("Thank you for using this App");
                     System.exit(0);
+                    System.out.println();
                     break;
                 default:
                     System.out.flush();
