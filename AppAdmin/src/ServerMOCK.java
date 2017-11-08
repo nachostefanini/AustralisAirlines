@@ -4,7 +4,7 @@ import java.util.Map;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Server {
+public class ServerMOCK {
 
     ArrayList<Pilot> pilots = new ArrayList<>();
     ArrayList<Airplane> airplanes = new ArrayList<>();
