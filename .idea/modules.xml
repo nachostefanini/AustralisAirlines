@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/AppAdmin/AppAdmin.iml" filepath="$PROJECT_DIR$/AppAdmin/AppAdmin.iml" />
       <module fileurl="file://$PROJECT_DIR$/AppClient/AppClient.iml" filepath="$PROJECT_DIR$/AppClient/AppClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/AppPilot/AppPilot.iml" filepath="$PROJECT_DIR$/AppPilot/AppPilot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppAdmin/Server.iml" filepath="$PROJECT_DIR$/AppAdmin/Server.iml" />
     </modules>
   </component>
 </project>
