@@ -30,5 +30,8 @@ public abstract class Seat {
         return name;
     }
 
+    public int getPrice() {
+        return price;
+    }
 }
 

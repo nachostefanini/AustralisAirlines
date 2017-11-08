@@ -2,48 +2,48 @@ import java.util.ArrayList;
 
 public class Ticket {
 
-    //the list with the airports needs to be in the server?
-    ArrayList<String> listOfAirports;
-
-    private String from;
-    private String to;
-    private int clientDNI;
+    private Flight vuelo;
+    private int total;
+    private String clientDNI;
     private int quantity;
     private int stops;
 
-    public Ticket(String from, String to, int client, int quantity, int stops) {
-
-        // Checks if the airport exists
-        for (String x: listOfAirports) {
-            if (from.equalsIgnoreCase(x)){
-                this.from = from;
-            }else {
-                throw new RuntimeException("The airport you selected does not exist.");
-            }
-        }
-
-        for (String x: listOfAirports) {
-            if (to.equalsIgnoreCase(x)){
-                this.to = to;
-            }else {
-                throw new RuntimeException("The airport you selected does not exist.");
-            }
-        }
+    public Ticket(Flight vuelo, int total, String client, int quantity) {
+        this.vuelo = vuelo;
+        this.total = total;
         this.clientDNI = client;
         this.quantity = quantity;
-        this.stops = stops;
+
     }
 
     public void print(){
         System.out.println("+--------------------------------------------+");
-        System.out.println("                    AppClient.Ticket                    ");
+        System.out.println("                    Ticket                    ");
         System.out.println("+--------------------------------------------+");
-        System.out.println("From: " + from);
-        System.out.println("To: " + to);
         System.out.println("Client: " + clientDNI);
+        System.out.println("Flight: " + vuelo.getCode());
+        System.out.println("From: " + vuelo.getAirportFrom().getlocation());
+        System.out.println("To: " + vuelo.getAirportTo().getlocation());
         System.out.println("Quantity: " + quantity);
-        System.out.println("Stops: " + stops);
+        System.out.println("Total: $" +total);
     }
 
 
 }
+
+// Checks if the airport exists
+//        for (String x: listOfAirports) {
+//            if (from.equalsIgnoreCase(x)){
+//                this.from = from;
+//            }else {
+//                throw new RuntimeException("The airport you selected does not exist.");
+//            }
+//        }
+//
+//        for (String x: listOfAirports) {
+//            if (to.equalsIgnoreCase(x)){
+//                this.to = to;
+//            }else {
+//                throw new RuntimeException("The airport you selected does not exist.");
+//            }
+//        }

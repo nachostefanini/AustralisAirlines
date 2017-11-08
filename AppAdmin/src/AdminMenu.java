@@ -74,9 +74,6 @@ public class AdminMenu {
 
 
 
-
-
-
         while (true) {
             System.out.println("+--------------------------------------------+");
             System.out.println("              Australis Airlines              ");
