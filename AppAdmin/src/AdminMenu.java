@@ -4,7 +4,7 @@ public class AdminMenu {
 
     public static void main(String[] args) throws IOException {
 
-        Server Server = new Server();
+        ServerMOCK Server = new ServerMOCK();
 
         //Agregamos agunas cosas
 

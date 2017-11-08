@@ -2,7 +2,7 @@ public class ClientMenu {
 
     public  static void main(String[] args) {
 
-        Server Server = new Server();
+        ServerMOCK Server = new ServerMOCK();
 
 
         while(true){
