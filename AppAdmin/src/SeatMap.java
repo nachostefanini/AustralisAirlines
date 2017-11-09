@@ -30,7 +30,6 @@ public class SeatMap {
 
         map = new Seat[row][column];
         map = fillSeatMap(map);
-
     }
 
     public int getRow() {
@@ -43,6 +42,10 @@ public class SeatMap {
 
     public Seat[][] getMap() {
         return map;
+    }
+
+    public Seat getaSeat() {
+        return aSeat;
     }
 
     public Seat[][] fillSeatMap(Seat[][] matrix) {

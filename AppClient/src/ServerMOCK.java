@@ -34,6 +34,8 @@ public class ServerMOCK{
 
         ArrayList<ArrayList<Flight>> definitivo = new ArrayList<>();
 
+        System.out.println(" ------------- Flight finder------------- ");
+
 
         //Si hay vuelo directo
         for (int i = 0; i < vuelos.size(); i++) {
@@ -106,8 +108,6 @@ public class ServerMOCK{
     }
     public void startPurchase (int quantity, String vuelo, int dni){
 
-
-
         ArrayList<Airplane> reservados = new ArrayList<>();
 
         //Esto seria validar q se puede hacer en otro metodo...
@@ -118,18 +118,18 @@ public class ServerMOCK{
 //        }
 
         int count = 0;
-        int total = 0;
 
+        int total = 0;
 
         while (count < quantity) {
 
             System.out.println("\n");
 
-
             for (Flight i : vuelos) {
 
                 if (i.getCode().equalsIgnoreCase(vuelo)){
 
+                    System.out.println(i.getCode());
                     i.getAirplane().print();
                     System.out.println("First Class: $500");
                     System.out.println("Couch : $100");
@@ -169,9 +169,7 @@ public class ServerMOCK{
                     }
                     System.out.println("Total: $" + total);
 
-
                 }
-
 
             }
         }
@@ -179,7 +177,7 @@ public class ServerMOCK{
 
 
 
-    public  boolean validateFlight(String code) {
+    public boolean validateFlight(String code) {
 
         for (Flight i : vuelos) {
             if (i.getCode().equalsIgnoreCase(code)) {
@@ -204,6 +202,33 @@ public class ServerMOCK{
 
     public void addflight (Flight flight){
             vuelos.add(flight);
+    }
+
+    public void cancelTicket(int code) {
+
+        for (Ticket i : tickets) {
+
+            if (i.getNumero() == code){
+
+                String seatName = i.getSeat();
+                Seat[][] mapa = i.getVuelo().getAirplane().getSeatMap().getMap();
+
+                for (int j = 0; j < mapa.length; j++) {
+                    for (int k = 0; k < mapa.length; k++) {
+
+                        if (mapa[j][k].getName().equalsIgnoreCase(seatName)){
+                            mapa[j][k].setStatus(true);
+                        }
+                    }
+                }
+
+
+                tickets.remove(i);
+                System.out.println("Ticket deleted");
+            }
+        }
+
+
     }
 }
 

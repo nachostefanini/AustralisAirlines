@@ -1,4 +1,7 @@
+import com.sun.corba.se.spi.activation.Server;
+
 import java.time.LocalDate;
+import java.util.Random;
 
 public class ClientMenu {
     public static ServerMOCK server;
@@ -7,16 +10,23 @@ public class ClientMenu {
 
         //Agregamos agunas cosas
 
-        SeatMap asientos = new SeatMap(8,8,4,4);
+        SeatMap asientos1 = new SeatMap(8,8,4,4);
+        SeatMap asientos2 = new SeatMap(8,8,4,4);
+        SeatMap asientos3 = new SeatMap(8,8,4,4);
+        SeatMap asientos4 = new SeatMap(8,8,4,4);
+        SeatMap asientos5 = new SeatMap(8,8,4,4);
+        SeatMap asientos6 = new SeatMap(8,8,4,4);
+        SeatMap asientos7 = new SeatMap(8,8,4,4);
+
 
         //Creo los aviones
-        Airplane test1 = new Airplane(asientos,"Test1");
-        Airplane test2 = new Airplane(asientos,"Test2");
-        Airplane test3 = new Airplane(asientos,"Test3");
-        Airplane test4 = new Airplane(asientos,"Test4");
-        Airplane test5 = new Airplane(asientos,"Test5");
-        Airplane test6 = new Airplane(asientos,"Test6");
-        Airplane test7 = new Airplane(asientos,"Test7");
+        Airplane test1 = new Airplane(asientos1,"Test1");
+        Airplane test2 = new Airplane(asientos2,"Test2");
+        Airplane test3 = new Airplane(asientos3,"Test3");
+        Airplane test4 = new Airplane(asientos4,"Test4");
+        Airplane test5 = new Airplane(asientos5,"Test5");
+        Airplane test6 = new Airplane(asientos6,"Test6");
+        Airplane test7 = new Airplane(asientos7,"Test7");
 
         server.addairplane(test1);
         server.addairplane(test2);
@@ -114,7 +124,6 @@ public class ClientMenu {
 //                    int stops = Scanner.getInt("Stops: ");
 
                     //Priemr paso, busco flights
-                    System.out.println(" ------------- Flight finder------------- ");
 
                     String[] data = new String[2];
                     data[0] = from;
@@ -132,14 +141,17 @@ public class ClientMenu {
                         if (condicion == true){
                             server.startPurchase(quantity,flight,dni);
                             out = false;
+                        } else {
+                            System.out.println("Flight not found");
                         }
 
-                    }
+                        out = false;
+                        }
                     
                     break;
                 case 2:
-                    System.out.flush();
-                    System.out.println();
+                   int code = Scanner.getInt("Insert the code of the ticket you want to cancel: ");
+                   server.cancelTicket(code);
                     break;
                 case 3:
                     server.printTickets();
