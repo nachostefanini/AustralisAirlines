@@ -83,7 +83,7 @@ public class SeatMap {
             System.out.println(str);
             str = "\t";
         }
-}
+    }
 
 //    public static void main(String[]args){
 //        AppAdmin.SeatMap a = new AppAdmin.SeatMap(19,19);

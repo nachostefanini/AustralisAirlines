@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ServerMOCK{
+public class ServerMOCK {
 
     ArrayList<Ticket> tickets = new ArrayList<>();
 
@@ -10,21 +10,18 @@ public class ServerMOCK{
     ArrayList<Pilot> pilots = new ArrayList<>();
 
 
-
-
-
     // ----------------------- TICKETS -----------------------/
-    public void addTicket(Ticket aTicket){
-       tickets.add(aTicket);
+    public void addTicket(Ticket aTicket) {
+        tickets.add(aTicket);
     }
 
-    public void printTickets(){
+    public void printTickets() {
 
         for (Ticket i : tickets) {
             i.print();
         }
 
-        if (tickets.isEmpty()){
+        if (tickets.isEmpty()) {
             System.out.println("The List is empty");
         }
     }
@@ -100,13 +97,15 @@ public class ServerMOCK{
         }
 
     }
+
     public void print(ArrayList<Flight> arreglo) {
         for (Flight i : arreglo) {
             System.out.println("Flight: " + i.getCode() + " (from: " + i.getAirportFrom().getlocation() + " to: " + i.getAirportTo().getlocation() + ")");
         }
         System.out.println("\n");
     }
-    public void startPurchase (int quantity, String vuelo, int dni){
+
+    public void startPurchase(int quantity, String vuelo, int dni) {
 
         ArrayList<Airplane> reservados = new ArrayList<>();
 
@@ -127,7 +126,7 @@ public class ServerMOCK{
 
             for (Flight i : vuelos) {
 
-                if (i.getCode().equalsIgnoreCase(vuelo)){
+                if (i.getCode().equalsIgnoreCase(vuelo)) {
 
                     System.out.println(i.getCode());
                     i.getAirplane().print();
@@ -148,15 +147,15 @@ public class ServerMOCK{
                                 total += i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].getPrice();
 
                                 System.out.println("\n");
-                                System.out.println("You succesfully reserved the seat: " + i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].printName() +  " $"+ i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].getPrice());
+                                System.out.println("You succesfully reserved the seat: " + i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].printName() + " $" + i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].getPrice());
 
                                 String seatName = i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].printName();
 
                                 reservados.add(i.getAirplane());
-                                i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].replaceName(" FULL  ");
+//                                i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].setEstado("(X)");
                                 count++;
 
-                                Ticket reserva = new Ticket(i,seatName ,dni ,quantity);
+                                Ticket reserva = new Ticket(i, seatName, dni, quantity);
                                 tickets.add(reserva);
                             } else {
                                 System.out.println("The seat is occupied");
@@ -176,7 +175,6 @@ public class ServerMOCK{
     }
 
 
-
     public boolean validateFlight(String code) {
 
         for (Flight i : vuelos) {
@@ -189,42 +187,53 @@ public class ServerMOCK{
     }
 
     void addpilot(Pilot aPilot) {
-            pilots.add(aPilot);
+        pilots.add(aPilot);
     }
 
     void addairplane(Airplane newAirplane) {
-            airplanes.add(newAirplane);
+        airplanes.add(newAirplane);
     }
 
     void addairport(Airport newairport) {
-            airports.add(newairport);
+        airports.add(newairport);
     }
 
-    public void addflight (Flight flight){
-            vuelos.add(flight);
+    public void addflight(Flight flight) {
+        vuelos.add(flight);
     }
 
     public void cancelTicket(int code) {
 
         for (Ticket i : tickets) {
+            if (i.getNumero() == code) {
+                String temp = i.getSeat();
+                System.out.println(temp);
 
-            if (i.getNumero() == code){
+                for (Flight f : vuelos) {
+                    if (f == i.getVuelo()){
 
-                String seatName = i.getSeat();
-                Seat[][] mapa = i.getVuelo().getAirplane().getSeatMap().getMap();
+                        for (int u = 0; u < f.getAirplane().getSeatMap().getRow(); u++) {
+                            for (int j = 0; j < f.getAirplane().getSeatMap().getColumn(); j++) {
 
-                for (int j = 0; j < mapa.length; j++) {
-                    for (int k = 0; k < mapa.length; k++) {
+                                System.out.println(f.getAirplane().getSeatMap().getMap()[u][j].getName());
 
-                        if (mapa[j][k].getName().equalsIgnoreCase(seatName)){
-                            mapa[j][k].setStatus(true);
+//                                String validar = temp+" (X)";
+
+                                if (f.getAirplane().getSeatMap().getMap()[u][j].getName().equalsIgnoreCase(temp)) {
+                                    f.getAirplane().getSeatMap().getMap()[u][j].setStatus(true);
+                                    f.getAirplane().getSeatMap().getMap()[u][j].replaceName(temp);
+                                    System.out.println("Llega a reeplazar temp?");
+
+                                }
+                            }
                         }
                     }
                 }
-                tickets.remove(i);
-                System.out.println("Ticket deleted");
+
             }
         }
+
+
     }
 }
 

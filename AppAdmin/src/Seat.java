@@ -1,9 +1,9 @@
 public abstract class Seat {
 
-    boolean status = true;
-    String name;
-    int price;
-    String type;
+    private boolean status = true;
+     String name;
+     int price;
+     String type;
 
 
     public Seat (){
@@ -32,6 +32,7 @@ public abstract class Seat {
     public int getPrice() {
         return price;
     }
+
 
     public String getName() {
         return name;
