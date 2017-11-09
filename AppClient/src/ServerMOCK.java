@@ -221,14 +221,10 @@ public class ServerMOCK{
                         }
                     }
                 }
-
-
                 tickets.remove(i);
                 System.out.println("Ticket deleted");
             }
         }
-
-
     }
 }
 
