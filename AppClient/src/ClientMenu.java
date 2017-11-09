@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 
 public class ClientMenu {
-
+    public static ServerMOCK server;
     public  static void main(String[] args) {
-        ServerMOCK Server = new ServerMOCK();
+        server = new ServerMOCK();
 
         //Agregamos agunas cosas
 
@@ -18,18 +18,18 @@ public class ClientMenu {
         Airplane test6 = new Airplane(asientos,"Test6");
         Airplane test7 = new Airplane(asientos,"Test7");
 
-        Server.addairplane(test1);
-        Server.addairplane(test2);
-        Server.addairplane(test3);
-        Server.addairplane(test4);
-        Server.addairplane(test5);
-        Server.addairplane(test6);
-        Server.addairplane(test7);
+        server.addairplane(test1);
+        server.addairplane(test2);
+        server.addairplane(test3);
+        server.addairplane(test4);
+        server.addairplane(test5);
+        server.addairplane(test6);
+        server.addairplane(test7);
 
 
         //Creo pilotos
         Pilot juan = new Pilot("Juan","Maradona","123456789");
-        Server.addpilot(juan);
+        server.addpilot(juan);
 
 
 
@@ -43,14 +43,14 @@ public class ClientMenu {
         Airport chi = new Airport("CHI001", "Chile");
         Airport mex = new Airport("MEX001", "Mexico");
 
-        Server.addairport(arg);
-        Server.addairport(ven);
-        Server.addairport(col);
-        Server.addairport(bra);
-        Server.addairport(per);
-        Server.addairport(uru);
-        Server.addairport(chi);
-        Server.addairport(mex);
+        server.addairport(arg);
+        server.addairport(ven);
+        server.addairport(col);
+        server.addairport(bra);
+        server.addairport(per);
+        server.addairport(uru);
+        server.addairport(chi);
+        server.addairport(mex);
 
         //Creo las fechas de los vuelos
         LocalDate date0 = LocalDate.of(2017,12,1);
@@ -71,13 +71,13 @@ public class ClientMenu {
         Flight g = new Flight(ven, bra, test7,"F07", juan, date6);
 
 
-        Server.addflight(a);
-        Server.addflight(b);
-        Server.addflight(c);
-        Server.addflight(d);
-        Server.addflight(e);
-        Server.addflight(f);
-        Server.addflight(g);
+        server.addflight(a);
+        server.addflight(b);
+        server.addflight(c);
+        server.addflight(d);
+        server.addflight(e);
+        server.addflight(f);
+        server.addflight(g);
 
 
 
@@ -120,17 +120,17 @@ public class ClientMenu {
                     data[0] = from;
                     data[1] = to;
 
-                    Server.find(data);
+                    server.find(data);
 
                     //2 Le pido q ingrese el flight q quiere comprar
 
                     boolean out = true;
                     while (out){
                         String flight = Scanner.getString("Insert the Flight you want: ");
-                        boolean condicion = Server.validateFlight(flight);
+                        boolean condicion = server.validateFlight(flight);
 
                         if (condicion == true){
-                            Server.startPurchase(quantity,flight,dni);
+                            server.startPurchase(quantity,flight,dni);
                             out = false;
                         }
 
@@ -142,7 +142,7 @@ public class ClientMenu {
                     System.out.println();
                     break;
                 case 3:
-                    Server.printTickets();
+                    server.printTickets();
                     break;
                 case 4:
                     System.out.println("Thank you for using the Clients App");
