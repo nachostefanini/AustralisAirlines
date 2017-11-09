@@ -7,7 +7,6 @@ public class Ticket {
     private int clientDNI;
     private int quantity;
     private int stops;
-
     String temp;
 
     public Ticket(Flight vuelo, String temp, int client, int quantity) {

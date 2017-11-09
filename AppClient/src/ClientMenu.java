@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ClientMenu {
 
     public  static void main(String[] args) {
@@ -113,10 +115,19 @@ public class ClientMenu {
                     Server.find(data);
 
                     //2 Le pido q ingrese el flight q quiere comprar
-                    String flight = Scanner.getString("Insert the Flight you want: ");
-                    Server.startPurchase(quantity,flight,dni);
 
+                    boolean out = true;
+                    while (out){
+                        String flight = Scanner.getString("Insert the Flight you want: ");
+                        boolean condicion = Server.validateFlight(flight);
 
+                        if (condicion == true){
+                            Server.startPurchase(quantity,flight,dni);
+                            out = false;
+                        }
+
+                    }
+                    
                     break;
                 case 2:
                     System.out.flush();

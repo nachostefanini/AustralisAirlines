@@ -10,6 +10,7 @@ public class ServerMOCK{
     ArrayList<Pilot> pilots = new ArrayList<>();
 
 
+
     // ----------------------- TICKETS -----------------------/
     public void addTicket(Ticket aTicket){
        tickets.add(aTicket);
@@ -36,7 +37,7 @@ public class ServerMOCK{
         for (int i = 0; i < vuelos.size(); i++) {
 
             if (arreglo[0].equalsIgnoreCase(vuelos.get(i).getAirportFrom().getlocation()) && arreglo[1].equalsIgnoreCase(vuelos.get(i).getAirportTo().getlocation())) {
-                System.out.println("Se encontro vuelo directo: ");
+                System.out.println("Direct flight found: ");
                 System.out.println(vuelos.get(i).getCode() + " from: " + vuelos.get(i).getAirportFrom().getlocation() + " to: " + vuelos.get(i).getAirportTo().getlocation());
                 vuelos.remove(vuelos.get(i));
                 System.out.println("\n");
@@ -57,7 +58,7 @@ public class ServerMOCK{
 
                         temp.add(vuelos.get(j));
 
-                        System.out.println("Se encontro vuelo con 1 sola escala: ");
+                        System.out.println("Flight with one stop found: ");
                         print(temp);
                     }
                 }
@@ -82,15 +83,13 @@ public class ServerMOCK{
 
                             if (temp.get(1).getAirportTo().getlocation().equalsIgnoreCase(vuelos.get(k).getAirportFrom().getlocation()) && vuelos.get(k).getAirportTo().getlocation().equalsIgnoreCase(arreglo[1])) {
                                 temp.add(vuelos.get(k));
-                                System.out.println("Se encontro vuelo con 2 escalas: ");
+                                System.out.println("Flight with two stops found: ");
                                 print(temp);
                             }
 
                         }
                         temp.remove(1);
-
                     }
-
                 }
                 temp.clear();
             }
@@ -104,6 +103,8 @@ public class ServerMOCK{
         System.out.println("\n");
     }
     public void startPurchase (int quantity, String vuelo, int dni){
+
+
 
         ArrayList<Airplane> reservados = new ArrayList<>();
 
@@ -176,14 +177,16 @@ public class ServerMOCK{
 
 
 
-//    public  int validateFlight(String code) {
-//
-//        for (Flight i : vuelos) {
-//            if (i.getCode().equalsIgnoreCase(code)) {
-//                return i.getCode();
-//            }
-//        }
-//    }
+    public  boolean validateFlight(String code) {
+
+        for (Flight i : vuelos) {
+            if (i.getCode().equalsIgnoreCase(code)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     void addpilot(Pilot aPilot) {
             pilots.add(aPilot);
