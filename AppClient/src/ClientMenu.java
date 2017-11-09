@@ -118,18 +118,29 @@ public class ClientMenu {
             switch(opc){
                 case 1:
 
-                    String from = Scanner.getString("From: ");
-                    String to = Scanner.getString("To: ");
                     int quantity = Scanner.getInt("Quantity: ");
-//                    int stops = Scanner.getInt("Stops: ");
 
-                    //Priemr paso, busco flights
+                    boolean exit2 = true;
+                    while (exit2){
 
-                    String[] data = new String[2];
-                    data[0] = from;
-                    data[1] = to;
+                        String from = Scanner.getString("From: ");
+                        String to = Scanner.getString("To: ");
 
-                    server.find(data);
+                        //Priemr paso, busco flights
+                        String[] data = new String[2];
+                        data[0] = from;
+                        data[1] = to;
+
+                        boolean concicion = server.find(data);
+
+                        if (concicion == true){
+                            System.out.println("Flight not found");
+                        }
+
+                        exit2 = concicion;
+                    }
+
+
 
                     //2 Le pido q ingrese el flight q quiere comprar
 

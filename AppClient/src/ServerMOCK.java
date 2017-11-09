@@ -30,12 +30,12 @@ public class ServerMOCK{
     }
 
 
-    public void find(String[] arreglo) {
+    public boolean find(String[] arreglo) {
 
+        boolean empty = true;
         ArrayList<ArrayList<Flight>> definitivo = new ArrayList<>();
 
-        System.out.println(" ------------- Flight finder------------- ");
-
+//        System.out.println(" ------------- Flight finder------------- ");
 
         //Si hay vuelo directo
         for (int i = 0; i < vuelos.size(); i++) {
@@ -45,6 +45,8 @@ public class ServerMOCK{
                 System.out.println(vuelos.get(i).getCode() + " from: " + vuelos.get(i).getAirportFrom().getlocation() + " to: " + vuelos.get(i).getAirportTo().getlocation());
                 vuelos.remove(vuelos.get(i));
                 System.out.println("\n");
+                empty = false;
+
             }
         }
 
@@ -64,6 +66,8 @@ public class ServerMOCK{
 
                         System.out.println("Flight with one stop found: ");
                         print(temp);
+                        empty = false;
+
                     }
                 }
                 temp.clear();
@@ -89,6 +93,8 @@ public class ServerMOCK{
                                 temp.add(vuelos.get(k));
                                 System.out.println("Flight with two stops found: ");
                                 print(temp);
+                                empty = false;
+
                             }
 
                         }
@@ -98,7 +104,7 @@ public class ServerMOCK{
                 temp.clear();
             }
         }
-
+return empty;
     }
     public void print(ArrayList<Flight> arreglo) {
         for (Flight i : arreglo) {
