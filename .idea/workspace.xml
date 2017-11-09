@@ -33,12 +33,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerMOCK.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServerMOCK.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AppClient/src/ServerMOCK.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="1989">
               <caret line="119" column="22" lean-forward="true" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flight.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AppAdmin/src/Flight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="103" lean-forward="false" selection-start-line="11" selection-start-column="103" selection-end-line="11" selection-end-column="103" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,7 +82,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/AppClient/src/List.java" />
-        <option value="$PROJECT_DIR$/AppAdmin/src/Flight.java" />
         <option value="$PROJECT_DIR$/AppAdmin/src/Sandbox2.java" />
         <option value="$PROJECT_DIR$/AppPilot/src/ServerMOCK.java" />
         <option value="$PROJECT_DIR$/AppPilot/src/PilotMenu.java" />
@@ -81,10 +92,11 @@
         <option value="$PROJECT_DIR$/AppClient/src/Ticket.java" />
         <option value="$PROJECT_DIR$/AppClient/src/ClientMenu.java" />
         <option value="$PROJECT_DIR$/AppClient/src/ServerMOCK.java" />
+        <option value="$PROJECT_DIR$/AppAdmin/src/Flight.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-11" />
     <option name="y" value="-11" />
     <option name="width" value="1942" />
@@ -322,8 +334,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16105418" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -661,16 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AppAdmin/src/Flight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AppAdmin/src/Seat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -712,9 +713,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AppClient/src/ServerMOCK.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
+        <state relative-caret-position="1989">
           <caret line="119" column="22" lean-forward="true" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AppAdmin/src/Flight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="103" lean-forward="false" selection-start-line="11" selection-start-column="103" selection-end-line="11" selection-end-column="103" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
