@@ -1,10 +1,11 @@
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class AdminMenu {
-
+    public static ServerMOCK server;
     public static void main(String[] args) throws IOException {
 
-        ServerMOCK Server = new ServerMOCK();
+        server = new ServerMOCK();
 
         //Agregamos agunas cosas
 
@@ -19,18 +20,18 @@ public class AdminMenu {
         Airplane test6 = new Airplane(asientos,"Test6");
         Airplane test7 = new Airplane(asientos,"Test7");
 
-        Server.addairplane(test1);
-        Server.addairplane(test2);
-        Server.addairplane(test3);
-        Server.addairplane(test4);
-        Server.addairplane(test5);
-        Server.addairplane(test6);
-        Server.addairplane(test7);
+        server.addairplane(test1);
+        server.addairplane(test2);
+        server.addairplane(test3);
+        server.addairplane(test4);
+        server.addairplane(test5);
+        server.addairplane(test6);
+        server.addairplane(test7);
 
 
         //Creo pilotos
         Pilot juan = new Pilot("Juan","Maradona","123456789");
-        Server.addpilot(juan);
+        server.addpilot(juan);
 
 
 
@@ -44,33 +45,41 @@ public class AdminMenu {
         Airport chi = new Airport("CHI001", "Chile");
         Airport mex = new Airport("MEX001", "Mexico");
 
-        Server.addairport(arg);
-        Server.addairport(ven);
-        Server.addairport(col);
-        Server.addairport(bra);
-        Server.addairport(per);
-        Server.addairport(uru);
-        Server.addairport(chi);
-        Server.addairport(mex);
+        server.addairport(arg);
+        server.addairport(ven);
+        server.addairport(col);
+        server.addairport(bra);
+        server.addairport(per);
+        server.addairport(uru);
+        server.addairport(chi);
+        server.addairport(mex);
+
+        //Creo las fechas de los vuelos
+        LocalDate date0 = LocalDate.of(2017,12,1);
+        LocalDate date1 = LocalDate.of(2017,12,2);
+        LocalDate date2 = LocalDate.of(2017,12,3);
+        LocalDate date3 = LocalDate.of(2017,12,4);
+        LocalDate date4 = LocalDate.of(2017,12,5);
+        LocalDate date5 = LocalDate.of(2017,12,6);
+        LocalDate date6 = LocalDate.of(2017,12,7);
 
         //Creo los vuelos
+        Flight a = new Flight(arg, ven,test1,"F01",juan, date0);
+        Flight b = new Flight(ven,col,test2,"F02",juan,date1);
+        Flight c = new Flight(col, bra,test3,"F03",juan,date2);
+        Flight d = new Flight(arg, col,test4,"F04",juan,date3);
+        Flight e = new Flight(arg, bra,test5,"F05",juan,date4);
+        Flight f = new Flight(col, ven,test6,"F06",juan,date5);
+        Flight g = new Flight(ven, bra,test7,"F07",juan, date6);
 
-        Flight a = new Flight(arg, ven,test1,"F01",juan);
-        Flight b = new Flight(ven,col,test2,"F02",juan);
-        Flight c = new Flight(col, bra,test3,"F03",juan);
-        Flight d = new Flight(arg, col,test4,"F04",juan);
-        Flight e = new Flight(arg, bra,test5,"F05",juan);
-        Flight f = new Flight(col, ven,test6,"F06",juan);
-        Flight g = new Flight(ven, bra,test7,"F07",juan);
 
-
-        Server.addflight(a);
-        Server.addflight(b);
-        Server.addflight(c);
-        Server.addflight(d);
-        Server.addflight(e);
-        Server.addflight(f);
-        Server.addflight(g);
+        server.addflight(a);
+        server.addflight(b);
+        server.addflight(c);
+        server.addflight(d);
+        server.addflight(e);
+        server.addflight(f);
+        server.addflight(g);
 
 
 
@@ -105,17 +114,17 @@ public class AdminMenu {
                     String surname = Scanner.getString("Enter the surname of the pilot: ");
                     String dni = Scanner.getString("Enter the DNI of the pilot: ");
                     Pilot pilot = new Pilot(name,surname,dni);
-                    Server.addpilot(pilot);
+                    server.addpilot(pilot);
                     break;
                 case 2:
                     System.out.flush();
                     dni = Scanner.getString("Enter the DNI of the pilot you want to remove");
-                    Server.quitpilot(dni);
+                    server.quitpilot(dni);
                     System.out.println();
                     break;
                 case 3:
                     System.out.flush();
-                    Server.printpilots();
+                    server.printpilots();
                     System.out.println();
                     break;
                 case 4:
@@ -132,19 +141,19 @@ public class AdminMenu {
                     }
                     SeatMap seats = new SeatMap(rows, columns,fc,c1);
                     Airplane newairplane = new Airplane(seats, code);
-                    Server.addairplane(newairplane);
+                    server.addairplane(newairplane);
                     break;
                 case 5:
                     System.out.flush();
                     code = Scanner.getString("Please enter the code of the airplane you want to quit ");
-                    Server.quitairplane(code);
+                    server.quitairplane(code);
                     code = Scanner.getString("Please enter the code of the airplane you want to eliminate: ");
-                    Server.quitairplane(code);
+                    server.quitairplane(code);
                     System.out.println();
                     break;
                 case 6:
                     System.out.flush();
-                    Server.printairplanes();
+                    server.printairplanes();
                     System.out.println();
                     break;
                 case 7:
@@ -152,41 +161,44 @@ public class AdminMenu {
                     String airportcode = Scanner.getString("Please enter the code of the airport: ");
                     String location = Scanner.getString("Please enter the location of the airport: ");
                     Airport newairport = new Airport(airportcode, location);
-                    Server.addairport(newairport);
+                    server.addairport(newairport);
                     System.out.println();
                     break;
                 case 8:
                     System.out.flush();
                     airportcode = Scanner.getString("Please enter the code of the airport you want to quit ");
-                    Server.quitairport(airportcode);
+                    server.quitairport(airportcode);
                     System.out.println();
                     break;
                 case 9:
                     System.out.flush();
-                    Server.printairports();
+                    server.printairports();
                     System.out.println();
                     break;
                 case 10:
                     String airportCodeFrom = Scanner.getString("Please enter the country of origin: ");
-                    Airport from = Server.findAirport(airportCodeFrom);
+                    Airport from = server.findAirport(airportCodeFrom);
                     String airportCodeTo = Scanner.getString("Please enter the country of destination: ");
-                    Airport to = Server.findAirport(airportCodeTo);
+                    Airport to = server.findAirport(airportCodeTo);
                     String airplaneCode = Scanner.getString("Please enter the code of the airplane you want to asign ");
-                    Airplane airplane = Server.findAirplane(airplaneCode);
+                    Airplane airplane = server.findAirplane(airplaneCode);
                     String pilotDNI = Scanner.getString("Please enter the dni of the pilot you want to asign");
-                    Pilot pilot1 = Server.findPilot(pilotDNI);
+                    Pilot pilot1 = server.findPilot(pilotDNI);
                     code = Scanner.getString("please enter a flight code");
-
-                    Flight aFlight = new Flight(from, to, airplane, code, pilot1);
-                    Server.addflight(aFlight);
+                    int year = Scanner.getInt("Please enter the year of the Flight: ");
+                    int month = Scanner.getInt("Please enter the month of the Flight: ");
+                    int day = Scanner.getInt("Please enter the day of the Flight: ");
+                    LocalDate date = LocalDate.of(year, month, day);
+                    Flight aFlight = new Flight(from, to, airplane, code, pilot1, date);
+                    server.addflight(aFlight);
                     break;
                 case 11:
                     code = Scanner.getString("please enter the flight code you want to erase");
-                    Server.quitflight(code);
+                    server.quitflight(code);
                     break;
                 case 12:
                     System.out.flush();
-                    Server.printflights();
+                    server.printflights();
                     break;
                 case 13:
                     System.out.flush();
@@ -194,10 +206,10 @@ public class AdminMenu {
                     String destiny = Scanner.getString("Please enter the airport of destiny: ");
                     System.out.println("\n");
                     System.out.println(" ------------- Flight finder------------- ");
-                    String data[] = new String[1];
+                    String data[] = new String[2];
                     data[0] = origin;
                     data[1] = destiny;
-                    Server.find(data);
+                    server.find(data);
                     break;
                 case 14:
                     System.out.flush();

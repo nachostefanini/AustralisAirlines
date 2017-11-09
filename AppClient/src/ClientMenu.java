@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class ClientMenu {
 
@@ -52,15 +52,23 @@ public class ClientMenu {
         Server.addairport(chi);
         Server.addairport(mex);
 
-        //Creo los vuelos
+        //Creo las fechas de los vuelos
+        LocalDate date0 = LocalDate.of(2017,12,1);
+        LocalDate date1 = LocalDate.of(2017,12,2);
+        LocalDate date2 = LocalDate.of(2017,12,3);
+        LocalDate date3 = LocalDate.of(2017,12,4);
+        LocalDate date4 = LocalDate.of(2017,12,5);
+        LocalDate date5 = LocalDate.of(2017,12,6);
+        LocalDate date6 = LocalDate.of(2017,12,7);
 
-        Flight a = new Flight(arg, ven,test1,"F01",juan);
-        Flight b = new Flight(ven,col,test2,"F02",juan);
-        Flight c = new Flight(col, bra,test3,"F03",juan);
-        Flight d = new Flight(arg, col,test4,"F04",juan);
-        Flight e = new Flight(arg, bra,test5,"F05",juan);
-        Flight f = new Flight(col, ven,test6,"F06",juan);
-        Flight g = new Flight(ven, bra,test7,"F07",juan);
+        //Creo los vuelos
+        Flight a = new Flight(arg, ven, test1,"F01", juan, date0);
+        Flight b = new Flight(ven, col, test2,"F02", juan, date1);
+        Flight c = new Flight(col, bra, test3,"F03", juan, date2);
+        Flight d = new Flight(arg, col, test4,"F04", juan, date3);
+        Flight e = new Flight(arg, bra, test5,"F05", juan, date4);
+        Flight f = new Flight(col, ven, test6,"F06", juan, date5);
+        Flight g = new Flight(ven, bra, test7,"F07", juan, date6);
 
 
         Server.addflight(a);
@@ -106,7 +114,7 @@ public class ClientMenu {
 //                    int stops = Scanner.getInt("Stops: ");
 
                     //Priemr paso, busco flights
-//                    System.out.println(" ------------- Flight finder------------- ");
+                    System.out.println(" ------------- Flight finder------------- ");
 
                     String[] data = new String[2];
                     data[0] = from;

@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -279,12 +280,12 @@ public class ServerMOCK {
                 getairportcode().equals(to) && vuelos.get(i).getAirplane().getcode().equals(airplane)
      */
 
-    public void addflight(Airport from, Airport to, Airplane airplane, Pilot pilot, String code) {
+    public void addflight(Airport from, Airport to, Airplane airplane, Pilot pilot, String code, LocalDate date) {
         for (int i = 0; i < vuelos.size(); i++) {
-            if (vuelos.get(i).getAirportFrom().equals(from) && vuelos.get(i).getAirportTo().equals(to) && vuelos.get(i).getAirplane().equals(airplane) && vuelos.get(i).getPilot().equals(pilot)) {
-                System.out.println("The flight alrady exist");
+            if (vuelos.get(i).getCode().equals(code)) {
+                System.out.println("The flight alredy exist");
             } else {
-                Flight newFlight = new Flight(from, to, airplane, code, pilot);
+                Flight newFlight = new Flight(from, to, airplane, code, pilot, date);
                 vuelos.add(newFlight);
             }
         }
