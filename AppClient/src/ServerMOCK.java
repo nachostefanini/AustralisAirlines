@@ -103,10 +103,7 @@ public class ServerMOCK{
         }
         System.out.println("\n");
     }
-    public void startPurchase (int quantity, Flight vuelo){
-
-        SeatMap map = new SeatMap(5, 5, 2, 3);
-        Airplane temp = new Airplane(map, "Temp");
+    public void startPurchase (int quantity, String vuelo, int dni){
 
         ArrayList<Airplane> reservados = new ArrayList<>();
 
@@ -124,64 +121,69 @@ public class ServerMOCK{
         while (count < quantity) {
 
             System.out.println("\n");
-            temp.print();
-            System.out.println("First Class: $500");
-            System.out.println("Couch : $100");
-            System.out.println("\n");
 
 
-            int rowTemp = Scanner.getInt("Select row: ");
+            for (Flight i : vuelos) {
 
-            if (rowTemp <= temp.getSeatMap().getRow()) {
-                int columnTemp = Scanner.getInt("Select column: ");
+                if (i.getCode().equalsIgnoreCase(vuelo)){
 
-                if (columnTemp <= temp.getSeatMap().getColumn()) {
+                    i.getAirplane().print();
+                    System.out.println("First Class: $500");
+                    System.out.println("Couch : $100");
+                    System.out.println("\n");
 
-                    if (temp.getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].isOccupied() == true) {
-                        temp.getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].setStatus(false);
-                        total += temp.getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].getPrice();
+                    int rowTemp = Scanner.getInt("Select row: ");
 
-                        System.out.println("\n");
-                        System.out.println("You succesfully reserved the seat: " + temp.getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].printName() +  " $"+ temp.getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].getPrice());
-                        reservados.add(temp);
-                        temp.getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].replaceName(" FULL  ");
-                        count++;
+                    if (rowTemp <= i.getAirplane().getSeatMap().getRow()) {
+                        int columnTemp = Scanner.getInt("Select column: ");
+
+                        if (columnTemp <= i.getAirplane().getSeatMap().getColumn()) {
+
+                            if (i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].isOccupied() == true) {
+
+                                i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].setStatus(false);
+                                total += i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].getPrice();
+
+                                System.out.println("\n");
+                                System.out.println("You succesfully reserved the seat: " + i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].printName() +  " $"+ i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].getPrice());
+
+                                String seatName = i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].printName();
+
+                                reservados.add(i.getAirplane());
+                                i.getAirplane().getSeatMap().getMap()[rowTemp - 1][columnTemp - 1].replaceName(" FULL  ");
+                                count++;
+
+                                Ticket reserva = new Ticket(i,seatName ,dni ,quantity);
+                                tickets.add(reserva);
+                            } else {
+                                System.out.println("The seat is occupied");
+                            }
+                        } else {
+                            System.out.println("Try again...");
+                        }
                     } else {
-                        System.out.println("The seat is occupied");
+                        System.out.println("Try again...");
                     }
-                } else {
-                    System.out.println("Try again...");
+                    System.out.println("Total: $" + total);
+
+
                 }
-            } else {
-                System.out.println("Try again...");
+
+
             }
-            System.out.println("Total: $" + total);
-
         }
-
-        System.out.println("Final: $" + total);
-
-
-        Ticket reserva = new Ticket(vuelo,total,"1234",quantity);
-        tickets.add(reserva);
     }
 
 
 
-    public  Flight validateFlight(String flight) {
-
-        for (Flight i : vuelos) {
-            if (i.getCode().equalsIgnoreCase(flight)){
-                return i;
-            }else {
-                throw new RuntimeException("Flight does not exsist");
-            }
-
-        }
-
-        //no me gusta para nada
-        return null;
-    }
+//    public  int validateFlight(String code) {
+//
+//        for (Flight i : vuelos) {
+//            if (i.getCode().equalsIgnoreCase(code)) {
+//                return i.getCode();
+//            }
+//        }
+//    }
 
     void addpilot(Pilot aPilot) {
             pilots.add(aPilot);

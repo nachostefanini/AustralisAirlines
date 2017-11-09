@@ -71,11 +71,22 @@ public class ClientMenu {
 
 
 
+        System.out.println("+--------------------------------------------+");
+        System.out.println("              Australis Airlines              ");
+        System.out.println("                  Admin app                   ");
+        System.out.println("+--------------------------------------------+");
+
+        int dni = Scanner.getInt("Insert your DNI: ");
+        System.out.println("Welcome back: " + dni);
+        System.out.println("\n");
+
         while(true){
+
             System.out.println("+--------------------------------------------+");
             System.out.println("              Australis Airlines              ");
             System.out.println("                  Admin app                   ");
             System.out.println("+--------------------------------------------+");
+
             System.out.println("Operation: ");
             System.out.println("1. Buy AppClient.Ticket: ");
             System.out.println("2. Cancel AppClient.Ticket: ");
@@ -103,10 +114,7 @@ public class ClientMenu {
 
                     //2 Le pido q ingrese el flight q quiere comprar
                     String flight = Scanner.getString("Insert the Flight you want: ");
-                    Flight tempF = Server.validateFlight(flight);
-
-                    Server.startPurchase(quantity,tempF);
-
+                    Server.startPurchase(quantity,flight,dni);
 
 
                     break;
