@@ -100,6 +100,8 @@ public class ClientMenu {
         System.out.println("Welcome back: " + dni);
         System.out.println("\n");
 
+
+
         while(true){
 
             System.out.println("+--------------------------------------------+");
@@ -117,52 +119,45 @@ public class ClientMenu {
 
             switch(opc){
                 case 1:
-
                     int quantity = Scanner.getInt("Quantity: ");
 
-                    boolean exit2 = true;
-                    while (exit2){
+                    String from = Scanner.getString("From: ");
+                    String to = Scanner.getString("To: ");
 
-                        String from = Scanner.getString("From: ");
-                        String to = Scanner.getString("To: ");
+                    String[] data = new String[2];
+                    data[0] = from;
+                    data[1] = to;
 
-                        //Priemr paso, busco flights
-                        String[] data = new String[2];
-                        data[0] = from;
-                        data[1] = to;
+                    boolean condicion = server.find(data);
 
-                        boolean concicion = server.find(data);
+                    if (condicion == false){
 
-                        if (concicion == true){
+                        String flight = Scanner.getString("Insert the Flight you want: ");
+                        boolean validacion = server.validateFlight(flight);
+
+
+                        if (validacion == true){
+                            server.startPurchase(quantity,flight,dni);
+                        }else {
                             System.out.println("Flight not found");
+                            break;
                         }
 
-                        exit2 = concicion;
+                    }else {
+                        System.out.println("Invalid destination or origin");
                     }
 
-
-
-                    //2 Le pido q ingrese el flight q quiere comprar
-
-                    boolean out = true;
-                    while (out){
-                        String flight = Scanner.getString("Insert the Flight you want: ");
-                        boolean condicion = server.validateFlight(flight);
-
-                        if (condicion == true){
-                            server.startPurchase(quantity,flight,dni);
-                            out = false;
-                        } else {
-                            System.out.println("Flight not found");
-                        }
-
-                        out = false;
-                        }
-                    
                     break;
                 case 2:
                    int code = Scanner.getInt("Insert the code of the ticket you want to cancel: ");
-                   server.cancelTicket(code);
+
+                   boolean validar = server.validateTicket(code);
+
+                   if (validar == true){
+                       server.cancelTicket(code);
+                   }else {
+                       System.out.println("Ticket code not found");
+                   }
                     break;
                 case 3:
                     server.printTickets();
