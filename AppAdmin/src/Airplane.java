@@ -17,4 +17,14 @@ public class Airplane {
         seatMap.print();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Airplane airplane = (Airplane) o;
+
+        return code != null ? code.equals(airplane.code) : airplane.code == null;
+    }
+
 }

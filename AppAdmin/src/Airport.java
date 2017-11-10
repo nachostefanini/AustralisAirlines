@@ -14,4 +14,15 @@ public class Airport {
     public String getlocation(){
         return this.location;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Airport airport = (Airport) o;
+
+        return airportcode != null ? airportcode.equals(airport.airportcode) : airport.airportcode == null;
+    }
+
 }

@@ -30,7 +30,7 @@ public class AdminMenu {
 
 
         //Creo pilotos
-        Pilot juan = new Pilot("Juan","Maradona","123456789");
+        Pilot juan = new Pilot("Juan","Maradona","123");
         server.addpilot(juan);
 
 
@@ -147,8 +147,6 @@ public class AdminMenu {
                     System.out.flush();
                     code = Scanner.getString("Please enter the code of the airplane you want to quit ");
                     server.quitairplane(code);
-                    code = Scanner.getString("Please enter the code of the airplane you want to eliminate: ");
-                    server.quitairplane(code);
                     System.out.println();
                     break;
                 case 6:
@@ -176,10 +174,10 @@ public class AdminMenu {
                     System.out.println();
                     break;
                 case 10:
-                    String airportCodeFrom = Scanner.getString("Please enter the country of origin: ");
-                    Airport from = server.findAirport(airportCodeFrom);
-                    String airportCodeTo = Scanner.getString("Please enter the country of destination: ");
-                    Airport to = server.findAirport(airportCodeTo);
+                    String airportCodeFrom = Scanner.getString("Please enter the code of airport of origin: ");
+                    Airport from = server.findairport(airportCodeFrom);
+                    String airportCodeTo = Scanner.getString("Please enter the code of airport of destination: ");
+                    Airport to = server.findairport(airportCodeTo);
                     String airplaneCode = Scanner.getString("Please enter the code of the airplane you want to asign ");
                     Airplane airplane = server.findAirplane(airplaneCode);
                     String pilotDNI = Scanner.getString("Please enter the dni of the pilot you want to asign");
